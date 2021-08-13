@@ -10,7 +10,6 @@ public class conexaoPGSQL{
         String endereco = strEnd; 
         String usuario = strUsuario;
         String senha = strSenha;
-
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(endereco, usuario, senha);
