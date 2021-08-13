@@ -4,7 +4,7 @@ public class AcessoBanco{
     
     private conexaoPGSQL conectar(){
         conexaoPGSQL banco = new conexaoPGSQL();
-        banco.Conectar("jdbc:postgresql://localhost:5432/Projeto_Ninja", "postgres", "creepypasta");   
+        banco.Conectar("jdbc:postgresql://localhost:5432/Projeto_Ninja", "postgres", "creepypasta");  
         return banco;
     }
 
@@ -69,6 +69,7 @@ public class AcessoBanco{
 
     public void listarPersonagens(){
         conexaoPGSQL banco = conectar();
+        System.out.println("Aqui foi porra!!!!");
         String sql = "select id, nome from personagens";
         ResultSet resultado = banco.select(sql);
         try{

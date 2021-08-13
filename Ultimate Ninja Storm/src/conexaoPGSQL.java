@@ -7,12 +7,9 @@ public class conexaoPGSQL{
 
     //Conecta ao banco Projeto_Ninja
     public void Conectar(String strEnd, String strUsuario, String strSenha) {
-        String endereco = strEnd; 
-        String usuario = strUsuario;
-        String senha = strSenha;
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection(endereco, usuario, senha);
+            con = DriverManager.getConnection(strEnd, strUsuario, strSenha);
         } catch (ClassNotFoundException cnfe) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar o driver");
             cnfe.printStackTrace();
