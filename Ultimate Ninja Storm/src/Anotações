@@ -40,3 +40,4 @@ update ataques set tipo = 2 where nome = 'Rasengan'
 
 select A.força from ataques A, personagens P where A.tipo = 0 and A.personagem = P.id and P.nome = 'Naruto'
 
+select coisa coisa 
