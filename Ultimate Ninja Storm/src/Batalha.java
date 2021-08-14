@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Batalha {
                 if(adversario.recuperarVida()){
                     System.out.println(adversario.nome + " recuperou vida!");
                 }else{
-                    System.out.println(jogador.nome + " ,essa vitória é sua!");
+                    System.out.println(jogador.nome + ", essa vitória é sua!");
                 }break;
             case 2:
                 if(adversario.ativarEspecial()){
@@ -31,6 +32,7 @@ public class Batalha {
             default:
                 int ataqueAdversario = random.nextInt(3);
                 if(ataqueAdversario != 3){
+                    System.out.println(adversario.nome + " atacou.");
                     jogador.levarDano(adversario.ataque(ataqueAdversario, adversario.nome));
                 }else
                     System.out.println(adversario.nome + " errou o golpe!");
@@ -38,7 +40,7 @@ public class Batalha {
         }
     }
     
-    public void lutar(Personagens jogador, Personagens adversario){
+    public void lutar(Personagens jogador, Personagens adversario) throws InterruptedException, IOException{
 
         Scanner input = new Scanner(System.in);
         Random random = new Random();
@@ -60,6 +62,7 @@ public class Batalha {
                     System.out.println(adversario.nome + " desviou.");      //Resolver problema
                 }else{
                     adversario.levarDano(jogador.ataque(ataque, jogador.nome));
+                    System.out.println("Yo! Você atacou!");
                     System.out.println(adversario.nome + " sofre dano!");     // Tentar colocar nome do ataque
                 }
             }else if(entrada.equals("2")){
@@ -88,6 +91,9 @@ public class Batalha {
                 System.out.println("Erro: Comando inválido");
 
             sistemaAdversario(jogador, adversario);
+
+            System.out.println("\n" + jogador.nome + " " + jogador.toString());
+            System.out.println(adversario.nome + " " + adversario.toString() + "\n");
         }
         input.close();
     }
