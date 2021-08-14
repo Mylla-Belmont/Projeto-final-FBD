@@ -20,9 +20,9 @@ public class Personagens {
     }
 
     private void verificarChakra(int diminuir){
-        if(chakra <= 0)
+        if(chakra-diminuir <= 0){
             chakra = 0;
-        else
+        }else
             chakra -= diminuir;
     }
 

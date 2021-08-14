@@ -6,7 +6,7 @@ public class ModoDuelo{
 
     private Personagens escolherAleatorio(){
         Random random = new Random();
-        int aleatorio = random.nextInt(10);     //Pesquisar como saber tamanho do banco
+        int aleatorio = random.nextInt(3);     //Pesquisar como saber tamanho do banco
         AcessoBanco banco = new AcessoBanco();
         Personagens personagem = banco.retornarPersonagem(aleatorio);  
         return personagem;
@@ -44,12 +44,12 @@ public class ModoDuelo{
         }else if(entrada.equals("2")){
             aparencia.limparTela();
                 jogador = escolherAleatorio();    
-            adversario = escolherAleatorio();
+                adversario = escolherAleatorio();
 
         }else if(entrada.equals("3")){
             //Voltar ao menu (Com problemas!) resolver dps
         }
-        
+
         Batalha batalha = new Batalha();           
         batalha.lutar(jogador, adversario);
 
