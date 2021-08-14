@@ -32,8 +32,8 @@ public class Batalha {
             default:
                 int ataqueAdversario = random.nextInt(3);
                 if(ataqueAdversario != 3){
-                    System.out.println(adversario.nome + " atacou.");
                     jogador.levarDano(adversario.ataque(ataqueAdversario, adversario.nome));
+                    System.out.println(adversario.nome + " atacou.");
                 }else
                     System.out.println(adversario.nome + " errou o golpe!");
 
@@ -92,8 +92,8 @@ public class Batalha {
 
             sistemaAdversario(jogador, adversario);
 
-            System.out.println("\n" + jogador.nome + " " + jogador.toString());
-            System.out.println(adversario.nome + " " + adversario.toString() + "\n");
+            System.out.println("\n" + jogador.toString());
+            System.out.println(adversario.toString() + "\n");
         }
         input.close();
     }

@@ -2,7 +2,7 @@ select P.nome, força from ataques, personagens P where tipo = 0 and personagem 
 
 UPDATE personagens SET nome = 'Hinata' WHERE id = 6;
 
-select * from personagens
+select * from ataques
 
 create table personagens(
 	id serial not null,

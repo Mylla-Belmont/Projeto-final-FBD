@@ -103,7 +103,6 @@ public class Personagens {
             verificarChakra(10);
             return força;
         }else if(força == 30 && chakra >= 15){
-            chakra -= 20;
             agilidade -= 20;
             verificarChakra(20);
             return força;
