@@ -10,13 +10,13 @@ public class AcessoBanco{
 
     public int retornaEspecial(String nome){
         conexaoPGSQL banco = conectar();
-        String sql = "select especial from ataques where nome = " + nome;
+        String sql = "select especial from personagens where nome = '" + nome + "' ";
         ResultSet resultado = banco.select(sql);
         try {
             int especial = 0;
             while(resultado.next()){
                 especial = resultado.getInt("especial");
-            }
+            } 
             return especial;
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class AcessoBanco{
 
     public int retornarAtaque(int tipo, String nome){
         conexaoPGSQL banco = conectar();
-        String sql = "select A.força from ataques A, personagens P where A.tipo =" + tipo + "and A.personagem = P.id and P.nome = "+ nome;
+        String sql = "select A.força from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nome + "' ";
         ResultSet resultado = banco.select(sql);
         try{
             int ataque = 0;
@@ -43,7 +43,7 @@ public class AcessoBanco{
 
     public Personagens retornarPersonagem(int entrada){
         conexaoPGSQL banco = conectar();
-        String sql = "select nome, vida, chakra, especial, agilidade from personagens where id = " + entrada;
+        String sql = "select nome, vida, chakra, especial, agilidade from personagens where id = '" + entrada + "' ";
         ResultSet resultado = banco.select(sql);
         try{
             String nome = null;

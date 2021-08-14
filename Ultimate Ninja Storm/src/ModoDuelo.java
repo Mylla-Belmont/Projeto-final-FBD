@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ModoDuelo{
 
-    private Personagens escolherAleatorio(Scanner input){
+    private Personagens escolherAleatorio(){
         Random random = new Random();
         int aleatorio = random.nextInt(10);     //Pesquisar como saber tamanho do banco
         AcessoBanco banco = new AcessoBanco();
@@ -13,11 +13,10 @@ public class ModoDuelo{
     }
 
     private Personagens escolherPersonagem(Scanner input, String tipo){
-        String entrada;
         AcessoBanco banco = new AcessoBanco();
         banco.listarPersonagens();
             System.out.println("\nYo! Escolha seu " + tipo + "...\n");
-            entrada = input.nextLine();
+            String entrada = input.nextLine();
             Personagens personagem = banco.retornarPersonagem(Integer.parseInt(entrada));
         return personagem;
     }
@@ -44,8 +43,8 @@ public class ModoDuelo{
 
         }else if(entrada.equals("2")){
             aparencia.limparTela();
-            Personagens jogador = escolherAleatorio(input);     //Mandar pra batalha
-            Personagens adversario = escolherAleatorio(input);
+            Personagens jogador = escolherAleatorio();    
+            Personagens adversario = escolherAleatorio();
 
             Batalha batalha = new Batalha();            //Finalizar batalha
             batalha.lutar(jogador, adversario);

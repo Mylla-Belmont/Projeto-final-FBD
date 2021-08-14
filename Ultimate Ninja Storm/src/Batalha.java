@@ -40,17 +40,17 @@ public class Batalha {
     
     public void lutar(Personagens jogador, Personagens adversario){
 
+        Scanner input = new Scanner(System.in);
+        Random random = new Random();
+        Boolean aleatorio = random.nextBoolean();
+
         while(jogador.estaVivo() && adversario.estaVivo()){
             System.out.println("1 - Atacar");
             System.out.println("2 - Fazer especial");
             System.out.println("3 - Recuperar Vida");
             System.out.println("4 - Recuperar Chakra");
 
-            Random random = new Random();
-            Boolean aleatorio = random.nextBoolean();
             int ataque = random.nextInt(2);
-
-            Scanner input = new Scanner(System.in);
             System.out.println("\n" + jogador.nome + ", escolha sua ação!");
             String entrada = input.nextLine();                       
             System.out.println("\n");
@@ -88,8 +88,7 @@ public class Batalha {
                 System.out.println("Erro: Comando inválido");
 
             sistemaAdversario(jogador, adversario);
-
-            input.close();
         }
+        input.close();
     }
 }
