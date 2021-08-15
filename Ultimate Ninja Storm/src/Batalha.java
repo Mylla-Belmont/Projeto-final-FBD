@@ -52,6 +52,7 @@ public class Batalha {
             System.out.println("2 - Fazer especial");
             System.out.println("3 - Recuperar Vida");
             System.out.println("4 - Recuperar Chakra");
+            System.out.println("5 - Desistir"); //Fazer isso tbm
 
             int ataque = random.nextInt(2);
             System.out.println("\n" + jogador.nome + ", escolha sua ação!");
@@ -61,7 +62,7 @@ public class Batalha {
             if(entrada.equals("1")){      
                 aparencia.limparTela();  
                 if(adversario.diminuirAgilidade() == false){      
-                    System.out.println(adversario.nome + " desviou.");      //Resolver problema
+                    System.out.println(adversario.nome + " desviou.");      
                 }else{
                     adversario.levarDano(jogador.ataque(ataque, jogador.nome));
                     System.out.println("Yo! Você atacou!");
@@ -70,7 +71,7 @@ public class Batalha {
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
                 if(adversario.diminuirAgilidade() && aleatorio){      
-                    System.out.println(adversario.nome + " desviou.");      //Resolver problema
+                    System.out.println(adversario.nome + " desviou.");     
                 }else 
                     if(jogador.ativarEspecial()){
                         System.out.println("Você usuou um Jutsu avançado!");

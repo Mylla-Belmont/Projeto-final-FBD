@@ -22,37 +22,39 @@ public class ModoDuelo{
     }
     
     public void menuDuelo(Aparencia aparencia) throws InterruptedException, IOException {
-        
-        System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
-        System.out.println("\nDuelo...\n");
-        System.out.println("1 - Escolher personagens");
-        System.out.println("2 - Aleatorio");
-        System.out.println("3 - Menu principal\n");
 
-        Scanner input = new Scanner(System.in);
-        String entrada = input.nextLine();     
+        Scanner input = new Scanner(System.in);     //Resolver problema de linhas tbm
         Personagens jogador = new Personagens(null, 0, 0, 0, 0);                        
-        Personagens adversario = new Personagens(null, 0, 0, 0, 0);                        
+        Personagens adversario = new Personagens(null, 0, 0, 0, 0);      
+        
+        while(true){
+            System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
+            System.out.println("\nDuelo...\n");
+            System.out.println("1 - Escolher personagens");
+            System.out.println("2 - Aleatorio");
+            System.out.println("3 - Menu principal\n");
 
-        if(entrada.equals("1")){
-            aparencia.limparTela();
-                jogador = escolherPersonagem(input, "jogador");
-            aparencia.limparTela();
-                adversario = escolherPersonagem(input, "adversario");
-            aparencia.limparTela();
+            String entrada = input.nextLine();                       
 
-        }else if(entrada.equals("2")){
-            aparencia.limparTela();
-                jogador = escolherAleatorio();    
-                adversario = escolherAleatorio();
+            if(entrada.equals("1")){
+                aparencia.limparTela();
+                    jogador = escolherPersonagem(input, "jogador");
+                aparencia.limparTela();
+                    adversario = escolherPersonagem(input, "adversario");
+                aparencia.limparTela();
 
-        }else if(entrada.equals("3")){
-            //Voltar ao menu (Com problemas!) resolver dps
+            }else if(entrada.equals("2")){
+                aparencia.limparTela();
+                    jogador = escolherAleatorio();    
+                    adversario = escolherAleatorio();
+
+            }else if(entrada.equals("3")){
+                input.close();
+                break;
+            }
+            Batalha batalha = new Batalha();           
+            batalha.lutar(jogador, adversario);
         }
-
-        Batalha batalha = new Batalha();           
-        batalha.lutar(jogador, adversario);
-
         input.close();
     }
 }
