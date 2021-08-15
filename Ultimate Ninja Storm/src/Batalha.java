@@ -40,7 +40,6 @@ public class Batalha {
     private void FazerEspecial(Personagens adversario, Personagens jogador, boolean aleatorio){
         if(adversario.diminuirAgilidade() && aleatorio){      
             System.out.println(adversario.nome + " desviou.");  
-
         }else if(jogador.ativarEspecial()){
             System.out.println("Você usuou o Jutsu avançado!");
             adversario.levarDano(jogador.getEspecial(jogador.nome));
@@ -80,23 +79,22 @@ public class Batalha {
             if(entrada.equals("1")){      
                 aparencia.limparTela(); 
                 Atacar(adversario, jogador, ataque); 
-     
-            }else if(entrada.equals("2")){
+            }else 
+            if(entrada.equals("2")){
                 aparencia.limparTela();
-                FazerEspecial(adversario, jogador, aleatorio);
-                    
-            }else if(entrada.equals("3")){
+                FazerEspecial(adversario, jogador, aleatorio);   
+            }else 
+            if(entrada.equals("3")){
                 aparencia.limparTela();
                 RecuperarVida(jogador);
-                
-            }else if(entrada.equals("4")){
+            }else 
+            if(entrada.equals("4")){
                 aparencia.limparTela();
                 RecuperarChakra(jogador);
-
-            }else if(entrada.equals("5")){
+            }else 
+            if(entrada.equals("5")){
                 aparencia.limparTela();
                 Desistir(jogador);
-
             }else{
                 aparencia.limparTela();
                 System.out.println("Erro: Comando inválido");
