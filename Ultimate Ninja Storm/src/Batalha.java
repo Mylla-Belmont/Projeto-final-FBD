@@ -37,6 +37,61 @@ public class Batalha {
 
         }
     }
+
+    private void ExibirResultado(Personagens jogador, Personagens adversario){
+        if(jogador.estaVivo() && !adversario.estaVivo()){
+            System.out.println("VOCÊ GANHOU!");
+            System.out.println("Hokage: -Parabéns" + jogador.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
+        }else if(adversario.estaVivo() && !jogador.estaVivo()){  
+            System.out.println("VOCÊ PERDEU!"); 
+            System.out.println("Hokage: -É " + jogador.nome + ", não foi dessa vez.\n\n");
+        }else if(!jogador.estaVivo() && !adversario.estaVivo()){
+            System.out.println("AMBOS PERDERAM!");
+            System.out.println("Hokage: -Não consigo entender como...\n\n");
+        }
+    }
+
+    private void Desistir(Personagens jogador) throws Exception{
+        System.out.println(jogador.nome + " desistiu da luta!");
+        System.out.println("\n--------------------------------\n");
+        ModoDuelo voltaMenuDuelo = new ModoDuelo();
+        voltaMenuDuelo.menuDuelo();
+    }
+
+    private void RecuperarChakra(Personagens jogador){
+        if(jogador.recuperarChakra()){
+            System.out.println("Yo! Você recuperou seu chakra!");
+        }else
+            System.out.println("Não foi possivel recuperar seu chakra...");
+    }
+
+    private void RecuperarVida(Personagens jogador){
+        if(jogador.recuperarVida()){
+            System.out.println("Yo! Você recuperou sua vida!");
+        }else
+            System.out.println("Não foi possivel recuperar sua vida...");
+    }
+
+    private void FazerEspecial(Personagens adversario, Personagens jogador, boolean aleatorio){
+        if(adversario.diminuirAgilidade() && aleatorio){      
+            System.out.println(adversario.nome + " desviou.");  
+
+        }else if(jogador.ativarEspecial()){
+            System.out.println("Você usuou o Jutsu avançado!");
+            adversario.levarDano(jogador.getEspecial(jogador.nome));
+        }else
+            System.out.println("Não foi possivel usar a habilidade especial...");
+    }
+
+    private void Atacar(Personagens adversario, Personagens jogador, int ataque){
+        if(adversario.diminuirAgilidade() == false){      
+            System.out.println(adversario.nome + " desviou.");      
+        }else{
+            adversario.levarDano(jogador.ataque(ataque, jogador.nome));
+            System.out.println("Yo! Você atacou com um " + jogador.getNomeAtaque(ataque, jogador.nome));       
+            System.out.println(adversario.nome + " sofre dano!");     
+        }
+    }
     
     public void lutar(Personagens jogador, Personagens adversario) throws Exception{
 
@@ -58,45 +113,24 @@ public class Batalha {
             System.out.println("\n");
 
             if(entrada.equals("1")){      
-                aparencia.limparTela();  
-                if(adversario.diminuirAgilidade() == false){      
-                    System.out.println(adversario.nome + " desviou.");      
-                }else{
-                    adversario.levarDano(jogador.ataque(ataque, jogador.nome));
-                    System.out.println("Yo! Você atacou com um " + jogador.getNomeAtaque(ataque, jogador.nome));       
-                    System.out.println(adversario.nome + " sofre dano!");     
-                }
+                aparencia.limparTela(); 
+                Atacar(adversario, jogador, ataque); 
+     
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
-                if(adversario.diminuirAgilidade() && aleatorio){      
-                    System.out.println(adversario.nome + " desviou.");  
-                       
-                }else if(jogador.ativarEspecial()){
-                    System.out.println("Você usuou o Jutsu avançado!");
-                    adversario.levarDano(jogador.getEspecial(jogador.nome));
-                }else
-                    System.out.println("Não foi possivel usar a habilidade especial...");
+                FazerEspecial(adversario, jogador, aleatorio);
                     
             }else if(entrada.equals("3")){
                 aparencia.limparTela();
-                if(jogador.recuperarVida()){
-                    System.out.println("Yo! Você recuperou sua vida!");
-                }else
-                    System.out.println("Não foi possivel recuperar sua vida...");
+                RecuperarVida(jogador);
                 
             }else if(entrada.equals("4")){
                 aparencia.limparTela();
-                if(jogador.recuperarChakra()){
-                    System.out.println("Yo! Você recuperou seu chakra!");
-                }else
-                    System.out.println("Não foi possivel recuperar seu chakra...");
+                RecuperarChakra(jogador);
 
             }else if(entrada.equals("5")){
                 aparencia.limparTela();
-                System.out.println(jogador.nome + " desistiu da luta!");
-                System.out.println("\n--------------------------------\n");
-                ModoDuelo voltaMenuDuelo = new ModoDuelo();
-                voltaMenuDuelo.menuDuelo();
+                Desistir(jogador);
 
             }else{
                 aparencia.limparTela();
@@ -106,16 +140,7 @@ public class Batalha {
             System.out.println("\n" + jogador.toString());
             System.out.println(adversario.toString() + "\n");
         }
-        if(jogador.estaVivo() && !adversario.estaVivo()){
-            System.out.println("VOCÊ GANHOU!");
-            System.out.println("Hokage: -Parabéns" + jogador.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
-        }else if(adversario.estaVivo() && !jogador.estaVivo()){  
-            System.out.println("VOCÊ PERDEU!"); 
-            System.out.println("Hokage: -É " + jogador.nome + ", não foi dessa vez.\n\n");
-        }else if(!jogador.estaVivo() && !adversario.estaVivo()){
-            System.out.println("AMBOS PERDERAM!");
-            System.out.println("Hokage: -Não consigo entender como...\n\n");
-        }
+        ExibirResultado(jogador, adversario);
         input.close();
     }
 }
