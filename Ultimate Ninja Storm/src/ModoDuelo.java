@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -51,7 +50,6 @@ public class ModoDuelo{
             aparencia.limparTela();
 
         }else if(entrada.equals("3")){
-            input.close();
             Menu.main(null);
         }
         Batalha batalha = new Batalha();           

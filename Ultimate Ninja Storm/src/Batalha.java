@@ -11,23 +11,22 @@ public class Batalha {
             case 0:
                 if(adversario.recuperarChakra()){         
                     System.out.println(adversario.nome + " recuperou chakra!");
-                }else{ 
+                }else 
                     System.out.println("Seu oponente é muito forte, mas ele não é pareo pra você!");
-                }break;
+                    break;
             case 1:
                 if(adversario.recuperarVida()){
                     System.out.println(adversario.nome + " recuperou vida!");
-                }else{
+                }else
                     System.out.println(jogador.nome + ", essa vitória é sua!");
-                }break;
+                    break;
             case 2:
                 if(adversario.ativarEspecial()){
                     jogador.levarDano(adversario.setEspecial(adversario.nome));
                     System.out.println(adversario.nome + " usou um jutsu avançado.");
-                }else{
+                }else
                     System.out.println(adversario.nome + ": - Onde está sua determinação, idiota?!");
-                }break;
-
+                    break;
             default:
                 int ataqueAdversario = random.nextInt(3);
                 if(ataqueAdversario != 3){
