@@ -10,15 +10,14 @@ public class AcessoBanco{
 
     public void getAllPersonagens(){
         conexaoPGSQL banco = conectar();
-        String sql = "SELECT P.nome, P.agilidade, P.especial, A.nome from personagens P, ataques A where P.id = A.personagem";
+        String sql = "SELECT P.nome, P.agilidade, P.especial from personagens P";
         ResultSet resultado = banco.select(sql);
         try{
             while(resultado.next()){
                 String nome = resultado.getString("nome");
                 int agilidade = resultado.getInt("agilidade");
                 int especial = resultado.getInt("especial");
-                String ataque = resultado.getString("nome");
-                System.out.println(nome + "\nAgilidade: " + agilidade + "\nEspecial: " + especial + "\nAtaques: "+ataque);
+                System.out.println(nome + "\nAgilidade: " + agilidade + "\nEspecial: " + especial + "\n");
             }
         }catch(Exception e){
             e.printStackTrace();

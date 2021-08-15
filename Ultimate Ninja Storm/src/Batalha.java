@@ -1,7 +1,19 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Batalha {
+public class Batalha{
+
+    private void sair(Scanner input) throws Exception{
+        while(true){
+            System.out.println("Aperte X para sair...");
+            String res = input.nextLine();
+            if(res.equals("x")){
+                ModoDuelo voltaMenuDuelo = new ModoDuelo();
+                voltaMenuDuelo.menuDuelo();
+            }else
+                System.out.println("fail: Comando inválido");
+        }
+    }
 
     private void ExibirResultado(Personagens jogador, Personagens adversario){
         if(jogador.estaVivo() && !adversario.estaVivo()){
@@ -105,6 +117,7 @@ public class Batalha {
             System.out.println(adversario.toString() + "\n");
         }
         ExibirResultado(jogador, adversario);
+        sair(input);
         input.close();
     }
 }

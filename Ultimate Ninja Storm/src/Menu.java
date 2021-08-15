@@ -38,6 +38,7 @@ public class Menu {
                 System.out.println("\n----------------------------------------\n");
                 System.out.println("\n\n   Até o próximo treinamento ninja!\n\n");
                 System.out.println("\n----------------------------------------\n");  
+                break;
             }else
                 continue;
             input.close();

@@ -22,6 +22,7 @@ public class ModoDuelo{
     
     public void menuDuelo() throws Exception {
         Aparencia aparencia = new Aparencia();
+        aparencia.limparTela();
         Personagens jogador = new Personagens(null, 0, 0, 0, 0);                        
         Personagens adversario = new Personagens(null, 0, 0, 0, 0);      
         

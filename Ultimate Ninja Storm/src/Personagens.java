@@ -32,8 +32,11 @@ public class Personagens {
             chakra -= diminuir;
     }
 
-    public void levarDano(int levarDano){           
-        vida -= levarDano;
+    public void levarDano(int dano){     
+        if(vida - dano <= 0){
+            vida = 0;
+        }else
+            vida -= dano;
     }
 
     public boolean estaVivo(){              

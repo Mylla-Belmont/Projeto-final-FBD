@@ -2,9 +2,17 @@ import java.util.Scanner;
 
 public class Configuracoes{
 
-    private void verPersonagem(){
+    private void verPersonagem(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
         banco.getAllPersonagens();
+        while(true){
+            System.out.println("Aperte X para sair...");
+            String entrada = input.nextLine();
+            if(entrada.equals("x")){
+                menuConfiguracoes();
+            }else
+                System.out.println("fail: Comando inválido");
+        }
     }
 
     public void menuConfiguracoes() throws Exception{
@@ -23,8 +31,8 @@ public class Configuracoes{
 
             if(entrada.equals("1")){
                 aparencia.limparTela();
-                verPersonagem();
-
+                verPersonagem(input);
+                
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
             }else if(entrada.equals("3")){
