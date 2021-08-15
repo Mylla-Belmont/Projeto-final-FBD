@@ -3,41 +3,6 @@ import java.util.Scanner;
 
 public class Batalha {
 
-    private void sistemaAdversario(Personagens jogador, Personagens adversario){
-        Random random = new Random();
-        int movimentoAdversario = random.nextInt(6);
-
-        switch (movimentoAdversario){
-            case 0:
-                if(adversario.recuperarChakra()){         
-                    System.out.println(adversario.nome + " recuperou chakra!");
-                }else 
-                    System.out.println("Seu oponente é muito forte, mas ele não é pareo pra você!");
-                    break;
-            case 1:
-                if(adversario.recuperarVida()){
-                    System.out.println(adversario.nome + " recuperou vida!");
-                }else
-                    System.out.println(jogador.nome + ", essa vitória é sua!");
-                    break;
-            case 2:
-                if(adversario.ativarEspecial()){
-                    jogador.levarDano(adversario.getEspecial(adversario.nome));
-                    System.out.println(adversario.nome + " usou um Jutsu avançado!"); 
-                }else
-                    System.out.println(adversario.nome + ": - Onde está sua determinação, idiota?!");
-                    break;
-            default:
-                int ataqueAdversario = random.nextInt(3);
-                if(ataqueAdversario != 3){
-                    jogador.levarDano(adversario.ataque(ataqueAdversario, adversario.nome));
-                    System.out.println(adversario.nome + " atacou com um " + adversario.getNomeAtaque(ataqueAdversario, adversario.nome));
-                }else
-                    System.out.println(adversario.nome + " errou o golpe!");
-
-        }
-    }
-
     private void ExibirResultado(Personagens jogador, Personagens adversario){
         if(jogador.estaVivo() && !adversario.estaVivo()){
             System.out.println("VOCÊ GANHOU!");
@@ -136,7 +101,8 @@ public class Batalha {
                 aparencia.limparTela();
                 System.out.println("Erro: Comando inválido");
             }
-            sistemaAdversario(jogador, adversario);
+            SistemaAdversario sistemaAdversario = new SistemaAdversario();
+            sistemaAdversario.Comandos(jogador, adversario);
             System.out.println("\n" + jogador.toString());
             System.out.println(adversario.toString() + "\n");
         }
