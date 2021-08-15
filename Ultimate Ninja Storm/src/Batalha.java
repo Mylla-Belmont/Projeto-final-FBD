@@ -45,6 +45,7 @@ public class Batalha {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
         Boolean aleatorio = random.nextBoolean();
+        Aparencia aparencia = new Aparencia();
 
         while(jogador.estaVivo() && adversario.estaVivo()){
             System.out.println("1 - Atacar");
@@ -57,7 +58,8 @@ public class Batalha {
             String entrada = input.nextLine();                       
             System.out.println("\n");
 
-            if(entrada.equals("1")){        
+            if(entrada.equals("1")){      
+                aparencia.limparTela();  
                 if(adversario.diminuirAgilidade() == false){      
                     System.out.println(adversario.nome + " desviou.");      //Resolver problema
                 }else{
@@ -66,6 +68,7 @@ public class Batalha {
                     System.out.println(adversario.nome + " sofre dano!");     // Tentar colocar nome do ataque
                 }
             }else if(entrada.equals("2")){
+                aparencia.limparTela();
                 if(adversario.diminuirAgilidade() && aleatorio){      
                     System.out.println(adversario.nome + " desviou.");      //Resolver problema
                 }else 
@@ -76,22 +79,24 @@ public class Batalha {
                         System.out.println("Não foi possivel usar a habilidade especial...");
                     
             }else if(entrada.equals("3")){
+                aparencia.limparTela();
                 if(jogador.recuperarVida()){
                     System.out.println("Yo! Você recuperou sua vida!");
                 }else
                     System.out.println("Não foi possivel recuperar sua vida...");
                 
             }else if(entrada.equals("4")){
+                aparencia.limparTela();
                 if(jogador.recuperarChakra()){
                     System.out.println("Yo! Você recuperou seu chakra!");
                 }else
                     System.out.println("Não foi possivel recuperar seu chakra...");
-                
-            }else
+    
+            }else{
+                aparencia.limparTela();
                 System.out.println("Erro: Comando inválido");
-
+            }
             sistemaAdversario(jogador, adversario);
-
             System.out.println("\n" + jogador.toString());
             System.out.println(adversario.toString() + "\n");
         }
