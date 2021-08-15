@@ -22,8 +22,8 @@ public class Batalha {
                     break;
             case 2:
                 if(adversario.ativarEspecial()){
-                    jogador.levarDano(adversario.setEspecial(adversario.nome));
-                    System.out.println(adversario.nome + " usou um jutsu avançado.");
+                    jogador.levarDano(adversario.getEspecial(adversario.nome));
+                    System.out.println(adversario.nome + " usou um Jutsu avançado!"); 
                 }else
                     System.out.println(adversario.nome + ": - Onde está sua determinação, idiota?!");
                     break;
@@ -31,7 +31,7 @@ public class Batalha {
                 int ataqueAdversario = random.nextInt(3);
                 if(ataqueAdversario != 3){
                     jogador.levarDano(adversario.ataque(ataqueAdversario, adversario.nome));
-                    System.out.println(adversario.nome + " atacou.");
+                    System.out.println(adversario.nome + " atacou com um " + adversario.getNomeAtaque(ataqueAdversario, adversario.nome));
                 }else
                     System.out.println(adversario.nome + " errou o golpe!");
 
@@ -63,8 +63,8 @@ public class Batalha {
                     System.out.println(adversario.nome + " desviou.");      
                 }else{
                     adversario.levarDano(jogador.ataque(ataque, jogador.nome));
-                    System.out.println("Yo! Você atacou!");
-                    System.out.println(adversario.nome + " sofre dano!");     // Tentar colocar nome do ataque
+                    System.out.println("Yo! Você atacou com um " + jogador.getNomeAtaque(ataque, jogador.nome));       
+                    System.out.println(adversario.nome + " sofre dano!");     
                 }
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
@@ -72,8 +72,8 @@ public class Batalha {
                     System.out.println(adversario.nome + " desviou.");     
                 }else 
                     if(jogador.ativarEspecial()){
-                        System.out.println("Você usuou um Jutsu avançado!");
-                        adversario.levarDano(jogador.setEspecial(jogador.nome));
+                        System.out.println("Você usuou o Jutsu avançado!");
+                        adversario.levarDano(jogador.getEspecial(jogador.nome));
                     }else
                         System.out.println("Não foi possivel usar a habilidade especial...");
                     

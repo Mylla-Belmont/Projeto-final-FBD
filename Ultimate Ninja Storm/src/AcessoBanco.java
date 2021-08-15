@@ -8,7 +8,23 @@ public class AcessoBanco{
         return banco;
     }
 
-    public int retornaEspecial(String nome){
+    public String getNomeAtaque(int tipo, String nomePersonagem){
+        conexaoPGSQL banco = conectar();
+        String sql = "select A.nome from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
+        ResultSet resultado = banco.select(sql);
+        try{
+            String nomeAtaque = null;
+            while(resultado.next()) {
+                nomeAtaque = resultado.getString("nome");
+            } 
+            return nomeAtaque;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getEspecial(String nome){
         conexaoPGSQL banco = conectar();
         String sql = "select especial from personagens where nome = '" + nome + "' ";
         ResultSet resultado = banco.select(sql);

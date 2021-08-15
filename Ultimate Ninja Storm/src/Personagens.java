@@ -13,9 +13,15 @@ public class Personagens {
         this.agilidade = agilidade;
     }
 
-    public int setEspecial(String nome){
+    public String getNomeAtaque(int ataque, String nome){
         AcessoBanco banco = new AcessoBanco();
-        int forçaEspecial = banco.retornaEspecial(nome);
+        String nomeAtaque = banco.getNomeAtaque(ataque, nome);
+        return nomeAtaque;
+    } 
+
+    public int getEspecial(String nome){
+        AcessoBanco banco = new AcessoBanco();
+        int forçaEspecial = banco.getEspecial(nome);
         return forçaEspecial;
     }
 
