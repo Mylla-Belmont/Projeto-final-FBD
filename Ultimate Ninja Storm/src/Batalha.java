@@ -52,7 +52,7 @@ public class Batalha {
             System.out.println("2 - Fazer especial");
             System.out.println("3 - Recuperar Vida");
             System.out.println("4 - Recuperar Chakra");
-            System.out.println("5 - Desistir"); //Fazer isso tbm
+            System.out.println("5 - Desistir"); 
 
             int ataque = random.nextInt(2);
             System.out.println("\n" + jogador.nome + ", escolha sua ação!");
@@ -92,7 +92,13 @@ public class Batalha {
                     System.out.println("Yo! Você recuperou seu chakra!");
                 }else
                     System.out.println("Não foi possivel recuperar seu chakra...");
-    
+
+            }else if(entrada.equals("5")){
+                aparencia.limparTela();
+                System.out.println(jogador.nome + " desistiu da luta!");
+                System.out.println("\n--------------------------------\n");
+                break;
+
             }else{
                 aparencia.limparTela();
                 System.out.println("Erro: Comando inválido");
@@ -102,13 +108,13 @@ public class Batalha {
             System.out.println(adversario.toString() + "\n");
         }
         if(jogador.estaVivo() && !adversario.estaVivo()){
-            System.out.println("\nVOCÊ GANHOU!");
+            System.out.println("VOCÊ GANHOU!");
             System.out.println("Hokage: -Parabéns" + jogador.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
         }else if(adversario.estaVivo() && !jogador.estaVivo()){  
-            System.out.println("\nVOCÊ PERDEU!"); 
+            System.out.println("VOCÊ PERDEU!"); 
             System.out.println("Hokage: -É " + jogador.nome + ", não foi dessa vez.\n\n");
         }else if(!jogador.estaVivo() && !adversario.estaVivo()){
-            System.out.println("\nAMBOS PERDERAM!");
+            System.out.println("AMBOS PERDERAM!");
             System.out.println("Hokage: -Não consigo entender como...\n\n");
         }
         input.close();

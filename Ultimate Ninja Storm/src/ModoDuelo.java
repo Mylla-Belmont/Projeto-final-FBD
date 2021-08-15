@@ -41,12 +41,11 @@ public class ModoDuelo{
                 aparencia.limparTela();
                     adversario = escolherPersonagem(input, "adversario");
                 aparencia.limparTela();
-
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
-                    jogador = escolherAleatorio();    
-                    adversario = escolherAleatorio();
-
+                jogador = escolherAleatorio();    
+                adversario = escolherAleatorio();
+                aparencia.limparTela();
             }else if(entrada.equals("3")){
                 input.close();
                 break;
