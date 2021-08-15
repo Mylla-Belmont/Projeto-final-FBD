@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -40,7 +39,7 @@ public class Batalha {
         }
     }
     
-    public void lutar(Personagens jogador, Personagens adversario) throws InterruptedException, IOException{
+    public void lutar(Personagens jogador, Personagens adversario) throws Exception{
 
         Scanner input = new Scanner(System.in);
         Random random = new Random();
@@ -97,7 +96,8 @@ public class Batalha {
                 aparencia.limparTela();
                 System.out.println(jogador.nome + " desistiu da luta!");
                 System.out.println("\n--------------------------------\n");
-                break;
+                ModoDuelo voltaMenuDuelo = new ModoDuelo();
+                voltaMenuDuelo.menuDuelo();
 
             }else{
                 aparencia.limparTela();
