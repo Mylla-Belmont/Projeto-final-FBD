@@ -69,13 +69,13 @@ public class Batalha {
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
                 if(adversario.diminuirAgilidade() && aleatorio){      
-                    System.out.println(adversario.nome + " desviou.");     
-                }else 
-                    if(jogador.ativarEspecial()){
-                        System.out.println("Você usuou o Jutsu avançado!");
-                        adversario.levarDano(jogador.getEspecial(jogador.nome));
-                    }else
-                        System.out.println("Não foi possivel usar a habilidade especial...");
+                    System.out.println(adversario.nome + " desviou.");  
+                       
+                }else if(jogador.ativarEspecial()){
+                    System.out.println("Você usuou o Jutsu avançado!");
+                    adversario.levarDano(jogador.getEspecial(jogador.nome));
+                }else
+                    System.out.println("Não foi possivel usar a habilidade especial...");
                     
             }else if(entrada.equals("3")){
                 aparencia.limparTela();
