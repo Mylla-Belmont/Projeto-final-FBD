@@ -26,7 +26,7 @@ public class Menu {
             }else if(line.equals("2")){
                 aparencia.limparTela();
                 ModoDuelo duelo = new ModoDuelo();
-                duelo.menuDuelo(aparencia);
+                duelo.menuDuelo(aparencia, input);
                 
             }else if(line.equals("3")){
                 aparencia.limparTela();

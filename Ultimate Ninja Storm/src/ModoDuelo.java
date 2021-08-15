@@ -21,9 +21,8 @@ public class ModoDuelo{
         return personagem;
     }
     
-    public void menuDuelo(Aparencia aparencia) throws InterruptedException, IOException {
+    public void menuDuelo(Aparencia aparencia, Scanner input) throws InterruptedException, IOException {
 
-        Scanner input = new Scanner(System.in);     //Resolver problema de linhas tbm
         Personagens jogador = new Personagens(null, 0, 0, 0, 0);                        
         Personagens adversario = new Personagens(null, 0, 0, 0, 0);      
         
@@ -55,6 +54,17 @@ public class ModoDuelo{
             Batalha batalha = new Batalha();           
             batalha.lutar(jogador, adversario);
         }
+        if(jogador.estaVivo() && !adversario.estaVivo()){
+            System.out.println("\nVOCÊ GANHOU!");
+            System.out.println("Hokage: -Parabéns" + jogador.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
+        }else if(adversario.estaVivo() && !jogador.estaVivo()){  
+            System.out.println("\nVOCÊ PERDEU!"); 
+            System.out.println("Hokage: -É " + jogador.nome + ", não foi dessa vez.\n\n");
+        }else if(!jogador.estaVivo() && !adversario.estaVivo()){
+            System.out.println("\nAMBOS PERDERAM!");
+            System.out.println("Hokage: -Não consigo entender como...\n\n");
+        }
+
         input.close();
     }
 }
