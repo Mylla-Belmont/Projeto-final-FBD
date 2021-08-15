@@ -7,16 +7,16 @@ public class ModoDuelo{
         Random random = new Random();
         int aleatorio = random.nextInt(3);     //Pesquisar como saber tamanho do banco
         AcessoBanco banco = new AcessoBanco();
-        Personagens personagem = banco.retornarPersonagem(aleatorio);  
+        Personagens personagem = banco.getPersonagem(aleatorio);  
         return personagem;
     }
 
     private Personagens escolherPersonagem(Scanner input, String tipo){
         AcessoBanco banco = new AcessoBanco();
-        banco.listarPersonagens();
-            System.out.println("\nYo! Escolha seu " + tipo + "...\n");
-            String entrada = input.nextLine();
-            Personagens personagem = banco.retornarPersonagem(Integer.parseInt(entrada));
+        banco.listPersonagens();
+        System.out.println("\nYo! Escolha seu " + tipo + "...\n");
+        String entrada = input.nextLine();
+        Personagens personagem = banco.getPersonagem(Integer.parseInt(entrada));
         return personagem;
     }
     

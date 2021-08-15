@@ -98,7 +98,7 @@ public class Personagens {
 
     int ataque(int ataque, String nome){   
         AcessoBanco banco = new AcessoBanco();
-        int força = banco.retornarAtaque(ataque, nome);
+        int força = banco.getAtaque(ataque, nome);
         
         if(força == 10 && chakra >= 5){
             agilidade -= 5;

@@ -8,6 +8,24 @@ public class AcessoBanco{
         return banco;
     }
 
+    public void getAllPersonagens(){
+        conexaoPGSQL banco = conectar();
+        String sql = "SELECT P.nome, P.agilidade, P.especial, A.nome from personagens P, ataques A where P.id = A.personagem";
+        ResultSet resultado = banco.select(sql);
+        try{
+            while(resultado.next()){
+                String nome = resultado.getString("nome");
+                int agilidade = resultado.getInt("agilidade");
+                int especial = resultado.getInt("especial");
+                String ataque = resultado.getString("nome");
+                System.out.println(nome + "\nAgilidade: " + agilidade + "\nEspecial: " + especial + "\nAtaques: "+ataque);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        banco.Desconectar();
+    }
+
     public String getNomeAtaque(int tipo, String nomePersonagem){
         conexaoPGSQL banco = conectar();
         String sql = "select A.nome from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
@@ -40,7 +58,7 @@ public class AcessoBanco{
         return 0;
     }
 
-    public int retornarAtaque(int tipo, String nome){
+    public int getAtaque(int tipo, String nome){
         conexaoPGSQL banco = conectar();
         String sql = "select A.força from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nome + "' ";
         ResultSet resultado = banco.select(sql);
@@ -57,7 +75,7 @@ public class AcessoBanco{
         return 0;
     }
 
-    public Personagens retornarPersonagem(int entrada){
+    public Personagens getPersonagem(int entrada){
         conexaoPGSQL banco = conectar();
         String sql = "select nome, vida, chakra, especial, agilidade from personagens where id = '" + entrada + "' ";
         ResultSet resultado = banco.select(sql);
@@ -83,7 +101,7 @@ public class AcessoBanco{
         return null;
     }
 
-    public void listarPersonagens(){
+    public void listPersonagens(){
         conexaoPGSQL banco = conectar();
         String sql = "select id, nome from personagens";
         ResultSet resultado = banco.select(sql);

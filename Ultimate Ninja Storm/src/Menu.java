@@ -31,6 +31,7 @@ public class Menu {
             }else if(line.equals("3")){
                 aparencia.limparTela();
                 Configuracoes configuracoes = new Configuracoes();
+                configuracoes.menuConfiguracoes();
             
             }else if(line.equals("4")){
                 aparencia.limparTela();

@@ -50,10 +50,6 @@ insert into ataques (personagem, nome, força, tipo) values (2, 'Soco', 10, 0)
 insert into ataques (personagem, nome, força, tipo) values (2, 'Soco forte', 20, 1)
 insert into ataques (personagem, nome, força, tipo) values (2, 'Soco mais forte', 30, 2)
 
-//tipo e nome
-select A.força, A.tipo, A.personagem, P.id, P.nome from ataques A, personagens P where A.tipo = *tipo* and
-A.personagem = P.id and P.nome = *nome* 
-
 select A.forçafrom ataques A, personagens P where A.tipo = 2 and A.personagem = P.id and P.nome = 'Sakura'
 
 update ataques set tipo = 2 where nome = 'Rasengan'
@@ -62,3 +58,4 @@ select A.força from ataques A, personagens P where A.tipo = 0 and A.personagem 
 
 select coisa coisa 
 
+SELECT P.nome, P.agilidade, P.especial, A.nome from personagens P, ataques A where P.id = A.personagem

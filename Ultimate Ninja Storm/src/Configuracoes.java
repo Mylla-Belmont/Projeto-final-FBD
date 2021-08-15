@@ -1,10 +1,15 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Configuracoes{
 
-    public void menuConfiguracoes() throws InterruptedException, IOException{
+    private void verPersonagem(){
+        AcessoBanco banco = new AcessoBanco();
+        banco.getAllPersonagens();
+    }
+
+    public void menuConfiguracoes() throws Exception{
         Aparencia aparencia = new Aparencia();
+        Scanner input = new Scanner(System.in);
 
         while(true){
             aparencia.limparTela();
@@ -14,15 +19,17 @@ public class Configuracoes{
             System.out.println("2 - Adicionar personagens");
             System.out.println("3 - Menu principal\n");
 
-            Scanner input = new Scanner(System.in);
             String entrada = input.nextLine();  
 
             if(entrada.equals("1")){
                 aparencia.limparTela();
+                verPersonagem();
+
             }else if(entrada.equals("2")){
                 aparencia.limparTela();
             }else if(entrada.equals("3")){
                 aparencia.limparTela();
+                Menu.main(null);
             }else
                 continue;
             input.close();
