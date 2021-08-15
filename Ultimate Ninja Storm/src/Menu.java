@@ -6,35 +6,40 @@ public class Menu {
         Scanner input = new Scanner(System.in);
         Aparencia aparencia = new Aparencia();
 
-        aparencia.limparTela();
-        System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
-        System.out.println("\nMenu Principal...\n");
-        System.out.println("1 - Duelo");
-        System.out.println("2 - Ranking");
-        System.out.println("3 - Configurações");
-        System.out.println("4 - Sair\n");
-
-        String line = input.nextLine();                             
-        System.out.println("\n");
-
-        //Criar metodo para alterar tabela e inserir informações
-        if(line.equals("1")){
+        while(true){
             aparencia.limparTela();
-            ModoDuelo duelo = new ModoDuelo();
-            duelo.menuDuelo();
+            System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
+            System.out.println("\nMenu Principal...\n");
+            System.out.println("1 - Duelo");
+            System.out.println("2 - Ranking");
+            System.out.println("3 - Configurações");
+            System.out.println("4 - Sair\n");
+
+            String line = input.nextLine();                             
+            System.out.println("\n");
+
+            //Criar metodo para alterar tabela e inserir informações
+            //Mudar nome variaveis (pra ficar bonito kkk)
+            if(line.equals("1")){
+                aparencia.limparTela();
+                ModoDuelo duelo = new ModoDuelo();
+                duelo.menuDuelo();
+                
+            }else if(line.equals("2")){
+                aparencia.limparTela();
             
-        }else if(line.equals("2")){
-            aparencia.limparTela();
-        
-        }else if(line.equals("3")){
-            aparencia.limparTela();
-        
-        }else if(line.equals("4")){
-            aparencia.limparTela();
-            System.out.println("\n----------------------------------------\n");
-            System.out.println("\n\n   Até o próximo treinamento ninja!\n\n");
-            System.out.println("\n----------------------------------------\n");  
+            }else if(line.equals("3")){
+                aparencia.limparTela();
+                Configuracoes configuracoes = new Configuracoes();
+            
+            }else if(line.equals("4")){
+                aparencia.limparTela();
+                System.out.println("\n----------------------------------------\n");
+                System.out.println("\n\n   Até o próximo treinamento ninja!\n\n");
+                System.out.println("\n----------------------------------------\n");  
+            }else
+                continue;
+            input.close();
         }
-        input.close();
     }
 }

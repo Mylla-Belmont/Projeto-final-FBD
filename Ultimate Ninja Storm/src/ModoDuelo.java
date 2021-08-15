@@ -21,39 +21,42 @@ public class ModoDuelo{
     }
     
     public void menuDuelo() throws Exception {
-
         Aparencia aparencia = new Aparencia();
-        Scanner input = new Scanner(System.in);
         Personagens jogador = new Personagens(null, 0, 0, 0, 0);                        
         Personagens adversario = new Personagens(null, 0, 0, 0, 0);      
         
-       
-        System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
-        System.out.println("\nDuelo...\n");
-        System.out.println("1 - Escolher personagens");
-        System.out.println("2 - Aleatorio");
-        System.out.println("3 - Menu principal\n");
+        while(true){
+            System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
+            System.out.println("\nDuelo...\n");
+            System.out.println("1 - Escolher personagens");
+            System.out.println("2 - Aleatorio");
+            System.out.println("3 - Menu principal\n");
 
-        String entrada = input.nextLine();                       
+            Scanner input = new Scanner(System.in);
+            String entrada = input.nextLine();                       
 
-        if(entrada.equals("1")){
-            aparencia.limparTela();
-            jogador = escolherPersonagem(input, "jogador");
-            aparencia.limparTela();
-            adversario = escolherPersonagem(input, "adversario");
-            aparencia.limparTela();
+            if(entrada.equals("1")){
+                aparencia.limparTela();
+                jogador = escolherPersonagem(input, "jogador");
+                aparencia.limparTela();
+                adversario = escolherPersonagem(input, "adversario");
+                aparencia.limparTela();
 
-        }else if(entrada.equals("2")){
-            aparencia.limparTela();
-            jogador = escolherAleatorio();    
-            adversario = escolherAleatorio();
-            aparencia.limparTela();
+            }else if(entrada.equals("2")){
+                aparencia.limparTela();
+                jogador = escolherAleatorio();    
+                adversario = escolherAleatorio();
+                aparencia.limparTela();
 
-        }else if(entrada.equals("3")){
-            Menu.main(null);
-        }
+            }else if(entrada.equals("3")){
+                Menu.main(null);
+            }else{
+                aparencia.limparTela();
+                continue;
+            }
         Batalha batalha = new Batalha();           
         batalha.lutar(jogador, adversario);
         input.close();
+        }
     }
 }
