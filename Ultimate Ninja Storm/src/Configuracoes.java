@@ -18,6 +18,7 @@ public class Configuracoes{
         banco.listPersonagens();
         System.out.println("Digite o número do personagem para remove-lo...");
         String entrada = input.nextLine();
+        banco.deleteAtaques(Integer.parseInt(entrada));
         banco.deletePersonagem(Integer.parseInt(entrada));
         sair(input);
     }
@@ -32,7 +33,7 @@ public class Configuracoes{
             String especial = input.nextLine();
         banco.addPersonagem(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
         int id = banco.getIdPersonagem(nome);
-        System.out.println("Nome do ataque 1...");
+        System.out.println("\nNome do ataque 1...");
             String ataque1 = input.nextLine();
         banco.addAtaques(id, ataque1, 10, 0);
         System.out.println("\nNome do ataque 2...");
@@ -81,9 +82,10 @@ public class Configuracoes{
                 aparencia.limparTela();
                 input.close();
                 Menu.main(null);
+                break;
             }else
                 continue;
-            input.close();
         }
+        input.close();
     }    
 }

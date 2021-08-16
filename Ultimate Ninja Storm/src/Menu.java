@@ -39,8 +39,8 @@ public class Menu {
                 break;
             }else
                 continue;
-            input.close();
         }
+        input.close();
     }
 }
 

@@ -8,6 +8,25 @@ public class AcessoBanco{
         return banco;
     }
 
+    public void deleteAtaques(int id){
+        conexaoPGSQL banco = conectar();
+        String sql = "DELETE FROM ataques where personagem = " + id;
+        int resultado = banco.update(sql);
+        try{
+            while(true){
+                if(resultado > 0){
+                    System.out.println("\nAtaques removidos com sucesso!");
+                    banco.Desconectar();
+                    break;
+                }else
+                    System.out.println("fail: Erro ao remover personagem...");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        banco.Desconectar();
+    }
+
     public void deletePersonagem(int id){
         conexaoPGSQL banco = conectar();
         String sql = "DELETE FROM personagens where id = " + id;
@@ -21,7 +40,6 @@ public class AcessoBanco{
                 }else
                     System.out.println("fail: Erro ao remover personagem...");
             }
-            banco.Desconectar();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -35,7 +53,7 @@ public class AcessoBanco{
         try{
             while(true){
                 if(resultado > 0){
-                    System.out.println("\nAtaques configurados!");
+                    System.out.println("\nAtaque configurado!");
                     banco.Desconectar();
                     break;
                 }else

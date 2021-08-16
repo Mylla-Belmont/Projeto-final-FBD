@@ -36,7 +36,7 @@ public class conexaoPGSQL{
             int res = stmt.executeUpdate(sql);
             con.close();
             return res;
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
             return 0;
         }

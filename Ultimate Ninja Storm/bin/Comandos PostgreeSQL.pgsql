@@ -47,11 +47,10 @@ create table ataques(
     CONSTRAINT personagens_fkey FOREIGN key (personagem) REFERENCES personagens(id)
 )
 
-SELECT * from ataques
+SELECT * from personagens
 
 SELECT id from personagens where nome = 'Saruka'
 
-insert into ataques()
 
 insert into ataques (personagem, id, nome, força) values (1, 1, 'Jutsu saxy', 10)
 insert into ataques (personagem, id, nome, força) values (1, 2, 'Jutsu Multiclone das sombras', 20)
@@ -70,3 +69,5 @@ select A.força from ataques A, personagens P where A.tipo = 0 and A.personagem 
 select coisa coisa 
 
 SELECT P.nome, P.agilidade, P.especial, A.nome from personagens P, ataques A where P.id = A.personagem
+
+DELETE FROM personagens where id = 17
