@@ -57,7 +57,7 @@ public class AcessoBanco{
                     banco.Desconectar();
                     break;
                 }else
-                    System.out.println("fail: Erro ao adicionar personagem...");
+                    System.out.println("fail: Erro ao adicionar ataques...");
             }
         }catch(Exception e){
             e.printStackTrace();

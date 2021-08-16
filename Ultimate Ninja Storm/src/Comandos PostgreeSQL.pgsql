@@ -47,7 +47,7 @@ create table ataques(
     CONSTRAINT personagens_fkey FOREIGN key (personagem) REFERENCES personagens(id)
 )
 
-SELECT * from personagens
+SELECT * from ataques
 
 SELECT id from personagens where nome = 'Saruka'
 
