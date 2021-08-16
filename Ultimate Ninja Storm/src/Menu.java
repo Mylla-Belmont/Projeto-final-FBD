@@ -4,10 +4,10 @@ public class Menu {
     public static void main(String[] args) throws Exception {
 
         Scanner input = new Scanner(System.in);
-        Aparencia aparencia = new Aparencia();
+        Appearance appearance = new Appearance();
 
         while(true){
-            aparencia.limparTela();
+            appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nMenu Principal...\n");
             System.out.println("1 - Duelo");
@@ -19,20 +19,20 @@ public class Menu {
             System.out.println("\n");
 
             if(line.equals("1")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 ModoDuelo duelo = new ModoDuelo();
                 duelo.menuDuelo();
                 
             }else if(line.equals("2")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
             
             }else if(line.equals("3")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 Configuracoes configuracoes = new Configuracoes();
                 configuracoes.menuConfiguracoes();
             
             }else if(line.equals("4")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 System.out.println("\n----------------------------------------\n");
                 System.out.println("\n\n   Até o próximo treinamento ninja!\n\n");
                 System.out.println("\n----------------------------------------\n");  

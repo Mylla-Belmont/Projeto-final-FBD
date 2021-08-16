@@ -74,7 +74,7 @@ public class Batalha{
         Scanner input = new Scanner(System.in);
         Random random = new Random();
         Boolean aleatorio = random.nextBoolean();
-        Aparencia aparencia = new Aparencia();
+        Appearance appearance = new Appearance();
 
         while(jogador.estaVivo() && adversario.estaVivo()){
             System.out.println("1 - Atacar");
@@ -89,26 +89,26 @@ public class Batalha{
             System.out.println("\n");
 
             if(entrada.equals("1")){      
-                aparencia.limparTela(); 
+                appearance.CleanScreen();
                 Atacar(adversario, jogador, ataque); 
             }else 
             if(entrada.equals("2")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 FazerEspecial(adversario, jogador, aleatorio);   
             }else 
             if(entrada.equals("3")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 RecuperarVida(jogador);
             }else 
             if(entrada.equals("4")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 RecuperarChakra(jogador);
             }else 
             if(entrada.equals("5")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 Desistir(jogador);
             }else{
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 System.out.println("Erro: Comando inválido");
             }
             SistemaAdversario sistemaAdversario = new SistemaAdversario();

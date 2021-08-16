@@ -1,7 +1,7 @@
 import java.io.IOException;
 
-public class Aparencia {
-    public void limparTela() throws InterruptedException, IOException{
+public class Appearance {
+    public void CleanScreen() throws InterruptedException, IOException{
         if (System.getProperty("os.name").contains("Windows")){ 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); 
         }else 

@@ -52,11 +52,11 @@ public class Configuracoes{
     }
 
     public void menuConfiguracoes() throws Exception{
-        Aparencia aparencia = new Aparencia();
+        Appearance appearance = new Appearance();
         Scanner input = new Scanner(System.in);
 
         while(true){
-            aparencia.limparTela();
+            appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nConfigurações...\n");
             System.out.println("1 - Ver personagens");
@@ -67,19 +67,19 @@ public class Configuracoes{
             String entrada = input.nextLine();  
 
             if(entrada.equals("1")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 verPersonagem(input);
                 
             }else if(entrada.equals("2")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 adicionarPersonagem(input);
 
             }else if(entrada.equals("3")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 removerPersonagem(input);
 
             }else if(entrada.equals("4")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 input.close();
                 Menu.main(null);
                 break;

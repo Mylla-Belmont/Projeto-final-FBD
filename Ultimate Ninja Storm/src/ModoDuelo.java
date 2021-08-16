@@ -21,8 +21,8 @@ public class ModoDuelo{
     }
     
     public void menuDuelo() throws Exception {
-        Aparencia aparencia = new Aparencia();
-        aparencia.limparTela();
+        Appearance appearance = new Appearance();
+        appearance.CleanScreen();
         Personagens jogador = new Personagens(null, 0, 0, 0, 0);                        
         Personagens adversario = new Personagens(null, 0, 0, 0, 0);      
         
@@ -37,22 +37,22 @@ public class ModoDuelo{
             String entrada = input.nextLine();                       
 
             if(entrada.equals("1")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 jogador = escolherPersonagem(input, "jogador");
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 adversario = escolherPersonagem(input, "adversario");
-                aparencia.limparTela();
+                appearance.CleanScreen();
 
             }else if(entrada.equals("2")){
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 jogador = escolherAleatorio();    
                 adversario = escolherAleatorio();
-                aparencia.limparTela();
+                appearance.CleanScreen();
 
             }else if(entrada.equals("3")){
                 Menu.main(null);
             }else{
-                aparencia.limparTela();
+                appearance.CleanScreen();
                 continue;
             }
         Batalha batalha = new Batalha();           
