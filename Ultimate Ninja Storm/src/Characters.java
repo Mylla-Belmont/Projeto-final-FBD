@@ -13,10 +13,10 @@ public class Characters {
         this.agilidade = agilidade;
     }
 
-    public String getNameAttack(int ataque, String nome){
+    public String getNameAttack(int attack, String nome){
         AcessoBanco banco = new AcessoBanco();
-        String nomeAtaque = banco.getNameAttack(ataque, nome);
-        return nomeAtaque;
+        String nomeattack = banco.getNameAttack(attack, nome);
+        return nomeattack;
     } 
 
     public int getSpecial(String nome){
@@ -32,7 +32,7 @@ public class Characters {
             chakra -= diminuir;
     }
 
-    public void levarDano(int dano){     
+    public void takeDamage(int dano){     
         if(vida - dano <= 0){
             vida = 0;
         }else
@@ -45,7 +45,7 @@ public class Characters {
         return false;
     }
 
-    public boolean diminuirAgilidade(){       
+    public boolean decreaseAgility(){       
         if(agilidade >= 5){
             agilidade -= 10;
             return true;
@@ -53,7 +53,7 @@ public class Characters {
         return false;
     }
 
-    public boolean ativarEspecial(){         
+    public boolean activateSpecial(){         
         if(especial  == 10 && chakra >= 90){
             especial -= 10;
             verificarChakra(60);
@@ -62,7 +62,7 @@ public class Characters {
         return false;
     }
 
-    public boolean recuperarVida(){   
+    public boolean recoverLife(){   
         if(chakra >= 10 && chakra <= 40 && vida <= 70){
             vida += 30;
             agilidade += 5;
@@ -82,7 +82,7 @@ public class Characters {
         return false;
     }
 
-    public boolean recuperarChakra(){    
+    public boolean recoverChakra(){    
         if(vida >= 10 && vida <= 40 && chakra <= 70){
             chakra += 30;
             agilidade += 5;
@@ -99,9 +99,9 @@ public class Characters {
         return false;
     }
 
-    int ataque(int ataque, String nome){   
+    int attack(int attack, String nome){   
         AcessoBanco banco = new AcessoBanco();
-        int força = banco.getAttack(ataque, nome);
+        int força = banco.getAttack(attack, nome);
         
         if(força == 10 && chakra >= 5){
             agilidade -= 5;

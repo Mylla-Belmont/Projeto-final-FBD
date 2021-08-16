@@ -1,21 +1,21 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Batalha{
+public class Battle{
 
-    private void sair(Scanner input) throws Exception{
+    private void exit(Scanner input) throws Exception{
         while(true){
-            System.out.println("Aperte X para sair...");
+            System.out.println("Aperte X para exit...");
             String res = input.nextLine();
             if(res.equals("x")){
-                DuelMode voltaMenuDuelo = new DuelMode();
-                voltaMenuDuelo.menuDuelo();
+                DuelMode backDuelMenu = new DuelMode();
+                backDuelMenu.menuDuelo();
             }else
                 System.out.println("fail: Comando inválido");
         }
     }
 
-    private void Exibirresult(Characters player, Characters adversary){
+    private void showResults(Characters player, Characters adversary){
         if(player.estaVivo() && !adversary.estaVivo()){
             System.out.println("VOCÊ GANHOU!");
             System.out.println("Hokage: -Parabéns" + player.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
@@ -28,85 +28,85 @@ public class Batalha{
         }
     }
 
-    private void Desistir(Characters player) throws Exception{
+    private void desist(Characters player) throws Exception{
         System.out.println(player.nome + " desistiu da luta!");
         System.out.println("\n--------------------------------\n");
-        DuelMode voltaMenuDuelo = new DuelMode();
-        voltaMenuDuelo.menuDuelo();
+        DuelMode backDuelMenu = new DuelMode();
+        backDuelMenu.menuDuelo();
     }
 
-    private void RecuperarChakra(Characters player){
-        if(player.recuperarChakra()){
+    private void recoverChakra(Characters player){
+        if(player.recoverChakra()){
             System.out.println("Yo! Você recuperou seu chakra!");
         }else
             System.out.println("Não foi possivel recuperar seu chakra...");
     }
 
-    private void RecuperarVida(Characters player){
-        if(player.recuperarVida()){
+    private void recoverLife(Characters player){
+        if(player.recoverLife()){
             System.out.println("Yo! Você recuperou sua vida!");
         }else
             System.out.println("Não foi possivel recuperar sua vida...");
     }
 
-    private void FazerEspecial(Characters adversary, Characters player, boolean aleatorio){
-        if(adversary.diminuirAgilidade() && aleatorio){      
+    private void makeSpecial(Characters adversary, Characters player, boolean aleatory){
+        if(adversary.decreaseAgility() && aleatory){      
             System.out.println(adversary.nome + " desviou.");  
-        }else if(player.ativarEspecial()){
+        }else if(player.activateSpecial()){
             System.out.println("Você usuou o Jutsu avançado!");
-            adversary.levarDano(player.getSpecial(player.nome));
+            adversary.takeDamage(player.getSpecial(player.nome));
         }else
             System.out.println("Não foi possivel usar a habilidade especial...");
     }
 
-    private void Atacar(Characters adversary, Characters player, int ataque){
-        if(adversary.diminuirAgilidade() == false){      
+    private void attack(Characters adversary, Characters player, int attack){
+        if(adversary.decreaseAgility() == false){      
             System.out.println(adversary.nome + " desviou.");      
         }else{
-            adversary.levarDano(player.ataque(ataque, player.nome));
-            System.out.println("Yo! Você atacou com um " + player.getNameAttack(ataque, player.nome));       
+            adversary.takeDamage(player.attack(attack, player.nome));
+            System.out.println("Yo! Você atacou com um " + player.getNameAttack(attack, player.nome));       
             System.out.println(adversary.nome + " sofre dano!");     
         }
     }
     
-    public void lutar(Characters player, Characters adversary) throws Exception{
+    public void fight(Characters player, Characters adversary) throws Exception{
 
         Scanner input = new Scanner(System.in);
         Random random = new Random();
-        Boolean aleatorio = random.nextBoolean();
+        Boolean aleatory = random.nextBoolean();
         Appearance appearance = new Appearance();
 
         while(player.estaVivo() && adversary.estaVivo()){
-            System.out.println("1 - Atacar");
+            System.out.println("1 - attack");
             System.out.println("2 - Fazer especial");
             System.out.println("3 - Recuperar Vida");
             System.out.println("4 - Recuperar Chakra");
-            System.out.println("5 - Desistir"); 
+            System.out.println("5 - desist"); 
 
-            int ataque = random.nextInt(2);
+            int attack = random.nextInt(2);
             System.out.println("\n" + player.nome + ", escolha sua ação!");
             String line = input.nextLine();                       
             System.out.println("\n");
 
             if(line.equals("1")){      
                 appearance.CleanScreen();
-                Atacar(adversary, player, ataque); 
+                attack(adversary, player, attack); 
             }else 
             if(line.equals("2")){
                 appearance.CleanScreen();
-                FazerEspecial(adversary, player, aleatorio);   
+                makeSpecial(adversary, player, aleatory);   
             }else 
             if(line.equals("3")){
                 appearance.CleanScreen();
-                RecuperarVida(player);
+                recoverLife(player);
             }else 
             if(line.equals("4")){
                 appearance.CleanScreen();
-                RecuperarChakra(player);
+                recoverChakra(player);
             }else 
             if(line.equals("5")){
                 appearance.CleanScreen();
-                Desistir(player);
+                desist(player);
             }else{
                 appearance.CleanScreen();
                 System.out.println("Erro: Comando inválido");
@@ -116,8 +116,8 @@ public class Batalha{
             System.out.println("\n" + player.toString());
             System.out.println(adversary.toString() + "\n");
         }
-        Exibirresult(player, adversary);
-        sair(input);
+        showResults(player, adversary);
+        exit(input);
         input.close();
     }
 }

@@ -5,9 +5,9 @@ public class DuelMode{
 
     private Characters ChooseRandom(){
         Random random = new Random();
-        int aleatorio = random.nextInt(3);     //Pesquisar como saber tamanho do banco
+        int aleatory = random.nextInt(3);     //Pesquisar como saber tamanho do banco
         AcessoBanco banco = new AcessoBanco();
-        Characters personagem = banco.getCharacters(aleatorio);  
+        Characters personagem = banco.getCharacters(aleatory);  
         return personagem;
     }
 
@@ -30,7 +30,7 @@ public class DuelMode{
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nDuelo...\n");
             System.out.println("1 - Escolher Characters");
-            System.out.println("2 - Aleatorio");
+            System.out.println("2 - aleatory");
             System.out.println("3 - Menu principal\n");
 
             Scanner input = new Scanner(System.in);
@@ -55,8 +55,8 @@ public class DuelMode{
                 appearance.CleanScreen();
                 continue;
             }
-        Batalha batalha = new Batalha();           
-        batalha.lutar(player, adversary);
+        Battle Battle = new Battle();           
+        Battle.fight(player, adversary);
         input.close();
         }
     }

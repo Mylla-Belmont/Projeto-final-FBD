@@ -1,8 +1,8 @@
-select P.nome, força from ataques, Characters P where tipo = 0 and personagem = P.id and P.nome = 'naruto'
+select P.nome, força from attacks, Characters P where tipo = 0 and personagem = P.id and P.nome = 'naruto'
 
 UPDATE Characters SET nome = 'Hinata' WHERE id = 6;
 
-select * from ataques
+select * from attacks
 
 create table Characters(
 	id serial not null,
@@ -27,17 +27,17 @@ DELETE from Characters where id = 8
 
 SELECT * from Characters
 
-alter table Characters RENAME nomeespecial to ataque1
+alter table Characters RENAME nomeespecial to attack1
 
-alter table Characters add column ataque3 varchar(30)
+alter table Characters add column attack3 varchar(30)
 
 alter table Characters drop COLUMN força3
 
 alter table Characters add column força3 integer
 
-insert into Characters (ataque1, ataque2, ataque3) values ()
+insert into Characters (attack1, attack2, attack3) values ()
 
-create table ataques(
+create table attacks(
     personagem serial not null,
     id integer,
     nome varchar(30),
@@ -47,27 +47,27 @@ create table ataques(
     CONSTRAINT Characters_fkey FOREIGN key (personagem) REFERENCES Characters(id)
 )
 
-SELECT * from ataques
+SELECT * from attacks
 
 SELECT id from Characters where nome = 'Saruka'
 
 
-insert into ataques (personagem, id, nome, força) values (1, 1, 'Jutsu saxy', 10)
-insert into ataques (personagem, id, nome, força) values (1, 2, 'Jutsu Multiclone das sombras', 20)
-insert into ataques (personagem, id, nome, força) values (1, 3, 'Rasengan', 30)
+insert into attacks (personagem, id, nome, força) values (1, 1, 'Jutsu saxy', 10)
+insert into attacks (personagem, id, nome, força) values (1, 2, 'Jutsu Multiclone das sombras', 20)
+insert into attacks (personagem, id, nome, força) values (1, 3, 'Rasengan', 30)
 
-insert into ataques (personagem, nome, força, tipo) values (2, 'Soco', 10, 0)
-insert into ataques (personagem, nome, força, tipo) values (2, 'Soco forte', 20, 1)
-insert into ataques (personagem, nome, força, tipo) values (2, 'Soco mais forte', 30, 2)
+insert into attacks (personagem, nome, força, tipo) values (2, 'Soco', 10, 0)
+insert into attacks (personagem, nome, força, tipo) values (2, 'Soco forte', 20, 1)
+insert into attacks (personagem, nome, força, tipo) values (2, 'Soco mais forte', 30, 2)
 
-select A.forçafrom ataques A, Characters P where A.tipo = 2 and A.personagem = P.id and P.nome = 'Sakura'
+select A.forçafrom attacks A, Characters P where A.tipo = 2 and A.personagem = P.id and P.nome = 'Sakura'
 
-update ataques set tipo = 2 where nome = 'Rasengan'
+update attacks set tipo = 2 where nome = 'Rasengan'
 
-select A.força from ataques A, Characters P where A.tipo = 0 and A.personagem = P.id and P.nome = 'Naruto'
+select A.força from attacks A, Characters P where A.tipo = 0 and A.personagem = P.id and P.nome = 'Naruto'
 
 select coisa coisa 
 
-SELECT P.nome, P.agilidade, P.especial, A.nome from Characters P, ataques A where P.id = A.personagem
+SELECT P.nome, P.agilidade, P.especial, A.nome from Characters P, attacks A where P.id = A.personagem
 
 DELETE FROM Characters where id = 17

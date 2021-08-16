@@ -4,7 +4,7 @@ public class Settings{
 
     private void Exit(Scanner input) throws Exception{
         while(true){
-            System.out.println("Aperte X para sair...");
+            System.out.println("Aperte X para exit...");
             String line = input.nextLine();
             if(line.equals("x")){
                 SettingsMenu();
@@ -33,15 +33,15 @@ public class Settings{
             String especial = input.nextLine();
         banco.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
         int id = banco.getIdCharacters(nome);
-        System.out.println("\nNome do ataque 1...");
-            String ataque1 = input.nextLine();
-        banco.addAttack(id, ataque1, 10, 0);
-        System.out.println("\nNome do ataque 2...");
-            String ataque2 = input.nextLine();
-        banco.addAttack(id, ataque2, 20, 1);
-        System.out.println("\nNome do ataque 3...");
-            String ataque3 = input.nextLine();
-        banco.addAttack(id, ataque3, 30, 2);
+        System.out.println("\nNome do attack 1...");
+            String attack1 = input.nextLine();
+        banco.addAttack(id, attack1, 10, 0);
+        System.out.println("\nNome do attack 2...");
+            String attack2 = input.nextLine();
+        banco.addAttack(id, attack2, 20, 1);
+        System.out.println("\nNome do attack 3...");
+            String attack3 = input.nextLine();
+        banco.addAttack(id, attack3, 30, 2);
         Exit(input);
     }
 

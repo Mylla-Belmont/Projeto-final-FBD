@@ -1,7 +1,7 @@
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class conexaoPGSQL{
+public class ConnectionPGSQL{
 
     Connection con = null;
 
