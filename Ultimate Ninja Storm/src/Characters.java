@@ -1,11 +1,11 @@
-public class Personagens {
+public class Characters {
     public String nome;
     private int vida;
     private int chakra;
     private int especial;
     private int agilidade;
 
-    Personagens (String nome, int vida, int chakra, int especial, int agilidade){ 
+    Characters (String nome, int vida, int chakra, int especial, int agilidade){ 
         this.nome = nome;
         this.vida = vida;
         this.chakra = chakra;
@@ -13,15 +13,15 @@ public class Personagens {
         this.agilidade = agilidade;
     }
 
-    public String getNomeAtaque(int ataque, String nome){
+    public String getNameAttack(int ataque, String nome){
         AcessoBanco banco = new AcessoBanco();
-        String nomeAtaque = banco.getNomeAtaque(ataque, nome);
+        String nomeAtaque = banco.getNameAttack(ataque, nome);
         return nomeAtaque;
     } 
 
-    public int getEspecial(String nome){
+    public int getSpecial(String nome){
         AcessoBanco banco = new AcessoBanco();
-        int forçaEspecial = banco.getEspecial(nome);
+        int forçaEspecial = banco.getSpecial(nome);
         return forçaEspecial;
     }
 
@@ -101,7 +101,7 @@ public class Personagens {
 
     int ataque(int ataque, String nome){   
         AcessoBanco banco = new AcessoBanco();
-        int força = banco.getAtaque(ataque, nome);
+        int força = banco.getAttack(ataque, nome);
         
         if(força == 10 && chakra >= 5){
             agilidade -= 5;

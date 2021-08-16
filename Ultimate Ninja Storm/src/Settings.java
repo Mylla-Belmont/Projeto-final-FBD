@@ -15,11 +15,11 @@ public class Settings{
 
     private void RemoveCharacter(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
-        banco.listPersonagens();
+        banco.listCharacters();
         System.out.println("Digite o número do personagem para remove-lo...");
         String line = input.nextLine();
-        banco.deleteAtaques(Integer.parseInt(line));
-        banco.deletePersonagem(Integer.parseInt(line));
+        banco.deleteAttacks(Integer.parseInt(line));
+        banco.deleteCharacters(Integer.parseInt(line));
         Exit(input);
     }
 
@@ -31,23 +31,23 @@ public class Settings{
             String agilidade = input.nextLine();
         System.out.println("\nForça do especial...");
             String especial = input.nextLine();
-        banco.addPersonagem(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
-        int id = banco.getIdPersonagem(nome);
+        banco.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
+        int id = banco.getIdCharacters(nome);
         System.out.println("\nNome do ataque 1...");
             String ataque1 = input.nextLine();
-        banco.addAtaques(id, ataque1, 10, 0);
+        banco.addAttack(id, ataque1, 10, 0);
         System.out.println("\nNome do ataque 2...");
             String ataque2 = input.nextLine();
-        banco.addAtaques(id, ataque2, 20, 1);
+        banco.addAttack(id, ataque2, 20, 1);
         System.out.println("\nNome do ataque 3...");
             String ataque3 = input.nextLine();
-        banco.addAtaques(id, ataque3, 30, 2);
+        banco.addAttack(id, ataque3, 30, 2);
         Exit(input);
     }
 
     private void SeeCharacters(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
-        banco.getAllPersonagens();
+        banco.getAllCharacters();
         Exit(input);
     }
 
@@ -59,26 +59,26 @@ public class Settings{
             appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nConfigurações...\n");
-            System.out.println("1 - Ver personagens");
+            System.out.println("1 - Ver Characters");
             System.out.println("2 - Adicionar personagm");
             System.out.println("3 - Remover personagem");
             System.out.println("4 - Menu principal\n");
 
-            String entrada = input.nextLine();  
+            String line = input.nextLine();  
 
-            if(entrada.equals("1")){
+            if(line.equals("1")){
                 appearance.CleanScreen();
                 SeeCharacters(input);
                 
-            }else if(entrada.equals("2")){
+            }else if(line.equals("2")){
                 appearance.CleanScreen();
                 AddCharacter(input);
 
-            }else if(entrada.equals("3")){
+            }else if(line.equals("3")){
                 appearance.CleanScreen();
                 RemoveCharacter(input);
 
-            }else if(entrada.equals("4")){
+            }else if(line.equals("4")){
                 appearance.CleanScreen();
                 input.close();
                 Menu.main(null);

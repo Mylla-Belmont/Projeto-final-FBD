@@ -49,4 +49,4 @@ public class Menu {
 //Fazer opção novo jogo
 //Fazer opção carregar jogo
 //Reorganizar código
-//Criar nova tabela para personagens novos
+//Criar nova tabela para Characters novos
