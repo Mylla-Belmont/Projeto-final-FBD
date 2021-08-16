@@ -58,10 +58,8 @@ public class LoadScreen{
     }
 }
 
-//Criar metodo para alterar tabela e inserir informações
-//Mudar nome variaveis (pra ficar bonito kkk)
-//Fazer opção novo jogo
-//Fazer opção carregar jogo
 //Reorganizar código
-//Criar nova tabela para Characters novos
-//Mudar todos os throws para try catch
+//jeitar voltar ao menu
+//Fezer ranking
+//Ajeitar ver personagens - configurações
+//Add opção de ver seu game?
