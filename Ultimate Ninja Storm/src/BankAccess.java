@@ -1,22 +1,22 @@
 import java.sql.ResultSet;
 
-public class AcessoBanco{
+public class BankAccess{
     
     private ConnectionPGSQL conectar(){
-        ConnectionPGSQL banco = new ConnectionPGSQL();
-        banco.Conectar("jdbc:postgresql://localhost:5432/Projeto_Ninja", "postgres", "creepypasta");  
-        return banco;
+        ConnectionPGSQL bank = new ConnectionPGSQL();
+        bank.Conectar("jdbc:postgresql://localhost:5432/Projeto_Ninja", "postgres", "creepypasta");  
+        return bank;
     }
 
     public void deleteAttacks(int id){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "DELETE FROM attacks where personagem = " + id;
-        int result= banco.update(sql);
+        int result= bank.update(sql);
         try{
             while(true){
                 if(result> 0){
                     System.out.println("\nattacks removidos com sucesso!");
-                    banco.Desconectar();
+                    bank.Desconectar();
                     break;
                 }else
                     System.out.println("fail: Erro ao remover personagem...");
@@ -24,18 +24,18 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 
     public void deleteCharacters(int id){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "DELETE FROM Characters where id = " + id;
-        int result= banco.update(sql);
+        int result= bank.update(sql);
         try{
             while(true){
                 if(result> 0){
                     System.out.println("\nPersonagem removido com sucesso!");
-                    banco.Desconectar();
+                    bank.Desconectar();
                     break;
                 }else
                     System.out.println("fail: Erro ao remover personagem...");
@@ -43,18 +43,18 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 
     public void addAttack(int id, String attack, int força, int tipo){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "INSERT INTO attacks(personagem, nome, força, tipo) values(" + id + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
-        int result= banco.update(sql);
+        int result= bank.update(sql);
         try{
             while(true){
                 if(result> 0){
                     System.out.println("\nattack configurado!");
-                    banco.Desconectar();
+                    bank.Desconectar();
                     break;
                 }else
                     System.out.println("fail: Erro ao adicionar attacks...");
@@ -62,19 +62,19 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 
     public void addCharacters(String nome, int agilidade, int especial){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "INSERT INTO Characters(id ,nome, vida, chakra, agilidade, especial)" +
                      "VALUES(default,'"+nome+"',100,100, "+agilidade+", "+especial+")";
-        int result= banco.update(sql);
+        int result= bank.update(sql);
         try{
             while(true){
                 if(result> 0){
                     System.out.println("\n" + nome + " adicionado com sucesso!");
-                    banco.Desconectar();
+                    bank.Desconectar();
                     break;
                 }else
                     System.out.println("fail: Erro ao adicionar personagem...");
@@ -82,13 +82,13 @@ public class AcessoBanco{
         }catch (Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 
     public void getAllCharacters(){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "SELECT P.nome, P.agilidade, P.especial from Characters P";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             while(result.next()){
                 String nome = result.getString("nome");
@@ -99,14 +99,14 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 
     public String getNameAttack(int tipo, String nomePersonagem){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "select A.nome from attacks A, Characters P where A.tipo = '" + tipo + 
                      "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             String nomeattack = null;
             while(result.next()) {
@@ -120,9 +120,9 @@ public class AcessoBanco{
     }
 
     public int getSpecial(String nome){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "select especial from Characters where nome = '" + nome + "' ";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try {
             int especial = 0;
             while(result.next()){
@@ -136,10 +136,10 @@ public class AcessoBanco{
     }
 
     public int getAttack(int tipo, String nome){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "select A.força from attacks A, Characters P where A.tipo = '" + tipo + 
                      "' and A.personagem = P.id and P.nome = '" + nome + "' ";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             int attack = 0;
             while(result.next()){
@@ -149,14 +149,14 @@ public class AcessoBanco{
         }catch (Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
         return 0;
     }
 
     public int getIdCharacters(String nome){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "SELECT id FROM Characters WHERE nome = '" + nome + "'";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             while(result.next()) {
                 int id = result.getInt("id");
@@ -169,9 +169,9 @@ public class AcessoBanco{
     }
 
     public Characters getCharacters(int line){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "select nome, vida, chakra, especial, agilidade from Characters where id = '" + line + "' ";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             String nome = null;
             int vida = 0;
@@ -190,14 +190,14 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
         return null;
     }
 
     public void listCharacters(){
-        ConnectionPGSQL banco = conectar();
+        ConnectionPGSQL bank = conectar();
         String sql = "select id, nome from Characters";
-        ResultSet result= banco.select(sql);
+        ResultSet result= bank.select(sql);
         try{
             while(result.next()){
                 int id = result.getInt("id");
@@ -207,6 +207,6 @@ public class AcessoBanco{
         }catch(Exception e){
             e.printStackTrace();
         }
-        banco.Desconectar();
+        bank.Desconectar();
     }
 }

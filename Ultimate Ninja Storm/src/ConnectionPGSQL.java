@@ -5,7 +5,7 @@ public class ConnectionPGSQL{
 
     Connection con = null;
 
-    //Conecta ao banco Projeto_Ninja
+    //Conecta ao bank Projeto_Ninja
     public void Conectar(String strEnd, String strUsuario, String strSenha) {
         try {
             Class.forName("org.postgresql.Driver");
@@ -19,17 +19,17 @@ public class ConnectionPGSQL{
         }
     }
 
-    //Desconecta do banco Projeto_Ninja
+    //Desconecta do bank Projeto_Ninja
     public void Desconectar() {
         try {
             con.close();
         } catch (SQLException onConClose) {
-            JOptionPane.showMessageDialog(null, "Erro ao desconectar o banco");
+            JOptionPane.showMessageDialog(null, "Erro ao desconectar o bank");
             onConClose.printStackTrace();
         }
     }
 
-    //Inseri valores dentro do banco
+    //Inseri valores dentro do bank
     public int update(String sql){
         try {
             Statement stmt = con.createStatement(); 
@@ -42,7 +42,7 @@ public class ConnectionPGSQL{
         }
     }
 
-    //Retorna valores dentro do banco
+    //Retorna valores dentro do bank
     public ResultSet select(String sql){
         try {
             Statement stmt = con.createStatement(); 

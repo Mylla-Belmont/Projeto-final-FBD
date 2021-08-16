@@ -14,40 +14,40 @@ public class Settings{
     }
 
     private void RemoveCharacter(Scanner input) throws Exception{
-        AcessoBanco banco = new AcessoBanco();
-        banco.listCharacters();
+        BankAccess bank = new BankAccess();
+        bank.listCharacters();
         System.out.println("Digite o número do personagem para remove-lo...");
         String line = input.nextLine();
-        banco.deleteAttacks(Integer.parseInt(line));
-        banco.deleteCharacters(Integer.parseInt(line));
+        bank.deleteAttacks(Integer.parseInt(line));
+        bank.deleteCharacters(Integer.parseInt(line));
         Exit(input);
     }
 
     private void AddCharacter(Scanner input) throws Exception{
-        AcessoBanco banco = new AcessoBanco();
+        BankAccess bank = new BankAccess();
         System.out.println("Nome do personagem...");
             String nome = input.nextLine();
         System.out.println("\nTotal de agilidade do personagem...");
             String agilidade = input.nextLine();
         System.out.println("\nForça do especial...");
             String especial = input.nextLine();
-        banco.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
-        int id = banco.getIdCharacters(nome);
+        bank.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
+        int id = bank.getIdCharacters(nome);
         System.out.println("\nNome do attack 1...");
             String attack1 = input.nextLine();
-        banco.addAttack(id, attack1, 10, 0);
+        bank.addAttack(id, attack1, 10, 0);
         System.out.println("\nNome do attack 2...");
             String attack2 = input.nextLine();
-        banco.addAttack(id, attack2, 20, 1);
+        bank.addAttack(id, attack2, 20, 1);
         System.out.println("\nNome do attack 3...");
             String attack3 = input.nextLine();
-        banco.addAttack(id, attack3, 30, 2);
+        bank.addAttack(id, attack3, 30, 2);
         Exit(input);
     }
 
     private void SeeCharacters(Scanner input) throws Exception{
-        AcessoBanco banco = new AcessoBanco();
-        banco.getAllCharacters();
+        BankAccess bank = new BankAccess();
+        bank.getAllCharacters();
         Exit(input);
     }
 

@@ -14,14 +14,14 @@ public class Characters {
     }
 
     public String getNameAttack(int attack, String nome){
-        AcessoBanco banco = new AcessoBanco();
-        String nomeattack = banco.getNameAttack(attack, nome);
+        BankAccess bank = new BankAccess();
+        String nomeattack = bank.getNameAttack(attack, nome);
         return nomeattack;
     } 
 
     public int getSpecial(String nome){
-        AcessoBanco banco = new AcessoBanco();
-        int forçaEspecial = banco.getSpecial(nome);
+        BankAccess bank = new BankAccess();
+        int forçaEspecial = bank.getSpecial(nome);
         return forçaEspecial;
     }
 
@@ -100,8 +100,8 @@ public class Characters {
     }
 
     int attack(int attack, String nome){   
-        AcessoBanco banco = new AcessoBanco();
-        int força = banco.getAttack(attack, nome);
+        BankAccess bank = new BankAccess();
+        int força = bank.getAttack(attack, nome);
         
         if(força == 10 && chakra >= 5){
             agilidade -= 5;

@@ -5,18 +5,18 @@ public class DuelMode{
 
     private Characters ChooseRandom(){
         Random random = new Random();
-        int aleatory = random.nextInt(3);     //Pesquisar como saber tamanho do banco
-        AcessoBanco banco = new AcessoBanco();
-        Characters personagem = banco.getCharacters(aleatory);  
+        int aleatory = random.nextInt(3);     //Pesquisar como saber tamanho do bank
+        BankAccess bank = new BankAccess();
+        Characters personagem = bank.getCharacters(aleatory);  
         return personagem;
     }
 
     private Characters ChooseCharacter(Scanner input, String tipo){
-        AcessoBanco banco = new AcessoBanco();
-        banco.listCharacters();
+        BankAccess bank = new BankAccess();
+        bank.listCharacters();
         System.out.println("\nYo! Escolha seu " + tipo + "...\n");
         String line = input.nextLine();
-        Characters personagem = banco.getCharacters(Integer.parseInt(line));
+        Characters personagem = bank.getCharacters(Integer.parseInt(line));
         return personagem;
     }
     
