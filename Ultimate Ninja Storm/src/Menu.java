@@ -20,6 +20,8 @@ public class Menu {
 
             //Criar metodo para alterar tabela e inserir informações
             //Mudar nome variaveis (pra ficar bonito kkk)
+            //Fazer opção novo jogo
+            //Fazer opção carregar jogo
             if(line.equals("1")){
                 aparencia.limparTela();
                 ModoDuelo duelo = new ModoDuelo();
