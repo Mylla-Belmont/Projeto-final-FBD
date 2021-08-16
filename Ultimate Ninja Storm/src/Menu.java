@@ -18,10 +18,6 @@ public class Menu {
             String line = input.nextLine();                             
             System.out.println("\n");
 
-            //Criar metodo para alterar tabela e inserir informações
-            //Mudar nome variaveis (pra ficar bonito kkk)
-            //Fazer opção novo jogo
-            //Fazer opção carregar jogo
             if(line.equals("1")){
                 aparencia.limparTela();
                 ModoDuelo duelo = new ModoDuelo();
@@ -47,3 +43,10 @@ public class Menu {
         }
     }
 }
+
+//Criar metodo para alterar tabela e inserir informações
+//Mudar nome variaveis (pra ficar bonito kkk)
+//Fazer opção novo jogo
+//Fazer opção carregar jogo
+//Reorganizar código
+//Criar nova tabela para personagens novos

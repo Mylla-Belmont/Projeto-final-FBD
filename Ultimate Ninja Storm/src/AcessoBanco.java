@@ -8,18 +8,61 @@ public class AcessoBanco{
         return banco;
     }
 
+    public void deletePersonagem(int id){
+        conexaoPGSQL banco = conectar();
+        String sql = "DELETE FROM personagens where id = " + id;
+        int resultado = banco.update(sql);
+        try{
+            while(true){
+                if(resultado > 0){
+                    System.out.println("\nPersonagem removido com sucesso!");
+                    banco.Desconectar();
+                    break;
+                }else
+                    System.out.println("fail: Erro ao remover personagem...");
+            }
+            banco.Desconectar();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        banco.Desconectar();
+    }
+
+    public void addAtaques(int id, String ataque, int força, int tipo){
+        conexaoPGSQL banco = conectar();
+        String sql = "INSERT INTO ataques(personagem, nome, força, tipo) values(" + id + ", '" + ataque+ "'," + força + ", " + tipo + ")"; 
+        int resultado = banco.update(sql);
+        try{
+            while(true){
+                if(resultado > 0){
+                    System.out.println("\nAtaques configurados!");
+                    banco.Desconectar();
+                    break;
+                }else
+                    System.out.println("fail: Erro ao adicionar personagem...");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        banco.Desconectar();
+    }
+
     public void addPersonagem(String nome, int agilidade, int especial){
         conexaoPGSQL banco = conectar();
         String sql = "INSERT INTO personagens(id ,nome, vida, chakra, agilidade, especial)" +
                      "VALUES(default,'"+nome+"',100,100, "+agilidade+", "+especial+")";
-        int res = banco.update(sql);
-        while(true){
-            if(res > 0){
-                System.out.println("\n" + nome + " adicionado com sucesso!");
-                banco.Desconectar();
-                break;
-            }else
-                System.out.println("fail: Erro ao adicionar personagem...");
+        int resultado = banco.update(sql);
+        try{
+            while(true){
+                if(resultado > 0){
+                    System.out.println("\n" + nome + " adicionado com sucesso!");
+                    banco.Desconectar();
+                    break;
+                }else
+                    System.out.println("fail: Erro ao adicionar personagem...");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         banco.Desconectar();
     }
@@ -89,6 +132,21 @@ public class AcessoBanco{
             e.printStackTrace();
         }
         banco.Desconectar();
+        return 0;
+    }
+
+    public int getIdPersonagem(String nome){
+        conexaoPGSQL banco = conectar();
+        String sql = "SELECT id FROM personagens WHERE nome = '" + nome + "'";
+        ResultSet resultado = banco.select(sql);
+        try{
+            while(resultado.next()) {
+                int id = resultado.getInt("id");
+                return id;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return 0;
     }
 
