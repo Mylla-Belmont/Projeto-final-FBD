@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class LoadScreen{
 
     private static void loadGame(Scanner input){
+        System.out.println("\nNARUTO ULTIMATE NINJA STORM!\n");
         BankAccess bank = new BankAccess();
         bank.getPlayers();
         System.out.println("\nQual o seu save?\n");
@@ -14,10 +15,13 @@ public class LoadScreen{
         }catch (Exception e) {
             e.printStackTrace();
         }
+        //Criar trigger para jogador que fez login
+        //Criar nova table login
     }
 
     private static void newGame(Scanner input){
-        System.out.println("Qual o seu nickname?");
+        System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
+        System.out.println("\nQual o seu nickname?");
         String namePlayer = input.nextLine();
         BankAccess bank = new BankAccess();
         bank.addPlayer(namePlayer);
@@ -30,7 +34,6 @@ public class LoadScreen{
     }
 
     public static void main(String[] args){
-
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
 
@@ -50,8 +53,7 @@ public class LoadScreen{
             appearance.CleanScreen();
             loadGame(input);
             //Carragar informações do jogo
-        }
-        
+        } 
         input.close();
     }
 }

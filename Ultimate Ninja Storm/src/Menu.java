@@ -13,7 +13,7 @@ public class Menu {
             System.out.println("1 - Duelo");
             System.out.println("2 - Ranking");
             System.out.println("3 - Configurações");
-            System.out.println("4 - exit\n");
+            System.out.println("4 - Sair\n");
 
             String line = input.nextLine();                             
             System.out.println("\n");
@@ -22,7 +22,7 @@ public class Menu {
                 appearance.CleanScreen();
                 DuelMode duel = new DuelMode();
                 try{
-                    duel.menuDuelo();
+                    duel.menuDuelo(namePlayer);
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class Menu {
                 appearance.CleanScreen();
                 Settings settings = new Settings();
                 try{
-                    settings.SettingsMenu();
+                    settings.SettingsMenu(namePlayer);
                 }catch(Exception e){
                     e.printStackTrace();
                 }

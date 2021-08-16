@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class Battle{
 
-    private void exit(Scanner input){
+    private void exit(Scanner input, String namePlayer){
         try{
             while(true){
                 System.out.println("Aperte X para exit...");
                 String res = input.nextLine();
                 if(res.equals("x")){
                     DuelMode backDuelMenu = new DuelMode();
-                    backDuelMenu.menuDuelo();
+                    backDuelMenu.menuDuelo(namePlayer);
                 }else
                     System.out.println("fail: Comando inválido");
             }
@@ -19,25 +19,29 @@ public class Battle{
         }
     }
 
-    private void showResults(Characters player, Characters adversary){
+    private void showResults(Characters player, Characters adversary, BankAccess bank, String namePlayer){
+        int id = bank.getIdPlayer(namePlayer);
         if(player.estaVivo() && !adversary.estaVivo()){
             System.out.println("VOCÊ GANHOU!");
             System.out.println("Hokage: -Parabéns" + player.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
+            bank.addPlayerWin(id);
         }else if(adversary.estaVivo() && !player.estaVivo()){  
             System.out.println("VOCÊ PERDEU!"); 
             System.out.println("Hokage: -É " + player.nome + ", não foi dessa vez.\n\n");
+            bank.addPlayerDefeat(id);
         }else if(!player.estaVivo() && !adversary.estaVivo()){
             System.out.println("AMBOS PERDERAM!");
             System.out.println("Hokage: -Não consigo entender como...\n\n");
+            bank.addPlayerDefeat(id);
         }
     }
 
-    private void desist(Characters player){
+    private void desist(Characters player, String namePlayer){
         try{
             System.out.println(player.nome + " desistiu da luta!");
             System.out.println("\n--------------------------------\n");
             DuelMode backDuelMenu = new DuelMode();
-            backDuelMenu.menuDuelo();
+            backDuelMenu.menuDuelo(namePlayer);
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,11 +81,12 @@ public class Battle{
         }
     }
     
-    public void fight(Characters player, Characters adversary){
+    public void fight(Characters player, Characters adversary, String namePlayer){
         Scanner input = new Scanner(System.in);
         Random random = new Random();
         Boolean aleatory = random.nextBoolean();
         Appearance appearance = new Appearance();
+        BankAccess bank = new BankAccess();
 
         while(player.estaVivo() && adversary.estaVivo()){
             System.out.println("1 - attack");
@@ -113,7 +118,7 @@ public class Battle{
                 
             }else if(line.equals("5")){
                 appearance.CleanScreen();
-                desist(player);
+                desist(player, namePlayer);
             }else{
                 appearance.CleanScreen();
                 System.out.println("Erro: Comando inválido");
@@ -123,8 +128,8 @@ public class Battle{
             System.out.println("\n" + player.toString());
             System.out.println(adversary.toString() + "\n");
         }
-        showResults(player, adversary);
-        exit(input);
+        showResults(player, adversary, bank, namePlayer);
+        exit(input, namePlayer);
         input.close();
     }
 }

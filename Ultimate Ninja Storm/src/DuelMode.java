@@ -20,7 +20,7 @@ public class DuelMode{
         return personagem;
     }
     
-    public void menuDuelo() throws Exception {
+    public void menuDuelo(String namePlayer){
         Appearance appearance = new Appearance();
         appearance.CleanScreen();
         Characters player = new Characters(null, 0, 0, 0, 0);                        
@@ -29,8 +29,8 @@ public class DuelMode{
         while(true){
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nDuelo...\n");
-            System.out.println("1 - Escolher Characters");
-            System.out.println("2 - aleatory");
+            System.out.println("1 - Escolher personagem");
+            System.out.println("2 - Aleatorio");
             System.out.println("3 - Menu principal\n");
 
             Scanner input = new Scanner(System.in);
@@ -57,7 +57,7 @@ public class DuelMode{
                 continue;
             }
         Battle Battle = new Battle();           
-        Battle.fight(player, adversary);
+        Battle.fight(player, adversary, namePlayer);
         input.close();
         }
     }
