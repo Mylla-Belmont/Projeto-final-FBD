@@ -89,11 +89,11 @@ public class Battle{
         BankAccess bank = new BankAccess();
 
         while(player.estaVivo() && adversary.estaVivo()){
-            System.out.println("1 - attack");
+            System.out.println("1 - Atacar");
             System.out.println("2 - Fazer especial");
             System.out.println("3 - Recuperar Vida");
             System.out.println("4 - Recuperar Chakra");
-            System.out.println("5 - desist"); 
+            System.out.println("5 - Desistir"); 
 
             int attack = random.nextInt(2);
             System.out.println("\n" + player.nome + ", escolha sua ação!");
