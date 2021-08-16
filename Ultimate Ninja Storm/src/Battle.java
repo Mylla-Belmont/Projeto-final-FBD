@@ -3,15 +3,19 @@ import java.util.Scanner;
 
 public class Battle{
 
-    private void exit(Scanner input) throws Exception{
-        while(true){
-            System.out.println("Aperte X para exit...");
-            String res = input.nextLine();
-            if(res.equals("x")){
-                DuelMode backDuelMenu = new DuelMode();
-                backDuelMenu.menuDuelo();
-            }else
-                System.out.println("fail: Comando inválido");
+    private void exit(Scanner input){
+        try{
+            while(true){
+                System.out.println("Aperte X para exit...");
+                String res = input.nextLine();
+                if(res.equals("x")){
+                    DuelMode backDuelMenu = new DuelMode();
+                    backDuelMenu.menuDuelo();
+                }else
+                    System.out.println("fail: Comando inválido");
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -28,11 +32,15 @@ public class Battle{
         }
     }
 
-    private void desist(Characters player) throws Exception{
-        System.out.println(player.nome + " desistiu da luta!");
-        System.out.println("\n--------------------------------\n");
-        DuelMode backDuelMenu = new DuelMode();
-        backDuelMenu.menuDuelo();
+    private void desist(Characters player){
+        try{
+            System.out.println(player.nome + " desistiu da luta!");
+            System.out.println("\n--------------------------------\n");
+            DuelMode backDuelMenu = new DuelMode();
+            backDuelMenu.menuDuelo();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void recoverChakra(Characters player){
@@ -69,8 +77,7 @@ public class Battle{
         }
     }
     
-    public void fight(Characters player, Characters adversary) throws Exception{
-
+    public void fight(Characters player, Characters adversary){
         Scanner input = new Scanner(System.in);
         Random random = new Random();
         Boolean aleatory = random.nextBoolean();
@@ -91,20 +98,20 @@ public class Battle{
             if(line.equals("1")){      
                 appearance.CleanScreen();
                 attack(adversary, player, attack); 
-            }else 
-            if(line.equals("2")){
+
+            }else if(line.equals("2")){
                 appearance.CleanScreen();
                 makeSpecial(adversary, player, aleatory);   
-            }else 
-            if(line.equals("3")){
+
+            }else if(line.equals("3")){
                 appearance.CleanScreen();
                 recoverLife(player);
-            }else 
-            if(line.equals("4")){
+
+            }else if(line.equals("4")){
                 appearance.CleanScreen();
                 recoverChakra(player);
-            }else 
-            if(line.equals("5")){
+                
+            }else if(line.equals("5")){
                 appearance.CleanScreen();
                 desist(player);
             }else{

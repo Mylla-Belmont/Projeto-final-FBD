@@ -3,38 +3,35 @@ import javax.swing.JOptionPane;
 
 public class ConnectionPGSQL{
 
-    Connection con = null;
+    Connection connection = null;
 
-    //Conecta ao bank Projeto_Ninja
-    public void Conectar(String strEnd, String strUsuario, String strSenha) {
+    public void connect(String strEnd, String strUsuario, String strSenha) {
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection(strEnd, strUsuario, strSenha);
+            connection= DriverManager.getConnection(strEnd, strUsuario, strSenha);
         } catch (ClassNotFoundException cnfe) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar o driver");
             cnfe.printStackTrace();
         } catch (SQLException sqlex) {
-            JOptionPane.showMessageDialog(null, "erro na query");
+            JOptionPane.showMessageDialog(null, "Erro na query");
             sqlex.printStackTrace();
         }
     }
 
-    //Desconecta do bank Projeto_Ninja
-    public void Desconectar() {
+    public void disconnect() {
         try {
-            con.close();
+            connection.close();
         } catch (SQLException onConClose) {
-            JOptionPane.showMessageDialog(null, "Erro ao desconectar o bank");
+            JOptionPane.showMessageDialog(null, "Erro ao desconnect o bank");
             onConClose.printStackTrace();
         }
     }
 
-    //Inseri valores dentro do bank
     public int update(String sql){
         try {
-            Statement stmt = con.createStatement(); 
+            Statement stmt = connection.createStatement(); 
             int res = stmt.executeUpdate(sql);
-            con.close();
+            connection.close();
             return res;
         }catch (Exception e) {
             e.printStackTrace();
@@ -42,12 +39,11 @@ public class ConnectionPGSQL{
         }
     }
 
-    //Retorna valores dentro do bank
     public ResultSet select(String sql){
         try {
-            Statement stmt = con.createStatement(); 
+            Statement stmt = connection.createStatement(); 
             ResultSet res = stmt.executeQuery(sql);
-            con.close();
+            connection.close();
             return res;
         } catch (Exception e) {
             e.printStackTrace();
