@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     
-    public void menu() throws Exception{
-
+    public void menu(String namePlayer){
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
         
@@ -22,7 +21,11 @@ public class Menu {
             if(line.equals("1")){
                 appearance.CleanScreen();
                 DuelMode duel = new DuelMode();
-                duel.menuDuelo();
+                try{
+                    duel.menuDuelo();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 
             }else if(line.equals("2")){
                 appearance.CleanScreen();
@@ -30,7 +33,11 @@ public class Menu {
             }else if(line.equals("3")){
                 appearance.CleanScreen();
                 Settings settings = new Settings();
-                settings.SettingsMenu();
+                try{
+                    settings.SettingsMenu();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
             
             }else if(line.equals("4")){
                 appearance.CleanScreen();

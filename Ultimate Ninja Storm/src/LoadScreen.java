@@ -6,18 +6,24 @@ public class LoadScreen{
         BankAccess bank = new BankAccess();
         bank.getPlayers();
         System.out.println("\nQual o seu save?\n");
-        String line = input.nextLine();
-        //Carregar save
+        String id = input.nextLine();
+        String namePlayer = bank.getNamePlayer(id);
+        Menu menu = new Menu();
+        try{
+            menu.menu(namePlayer);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void newGame(Scanner input){
         System.out.println("Qual o seu nickname?");
-        String nome = input.nextLine();
+        String namePlayer = input.nextLine();
         BankAccess bank = new BankAccess();
-        bank.addPlayer(nome);
+        bank.addPlayer(namePlayer);
         Menu menu = new Menu();
         try{
-            menu.menu();
+            menu.menu(namePlayer);
         }catch (Exception e) {
             e.printStackTrace();
         }

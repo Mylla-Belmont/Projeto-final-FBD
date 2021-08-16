@@ -82,7 +82,7 @@ public class Settings{
                 appearance.CleanScreen();
                 input.close();
                 Menu menu = new Menu();
-                menu.menu();
+                menu.menu(null);
                 break;
             }else
                 continue;

@@ -83,3 +83,5 @@ SELECT P.nome, P.agilidade, P.especial, A.nome from Characters P, attacks A wher
 DELETE FROM Characters where id = 17
 
 insert into jogador (id, nickname, vitorias, derrotas, pontuação) values (default, 'Bribinha', 0, 0, 0)
+
+SELECT nickname from jogador where id = 1

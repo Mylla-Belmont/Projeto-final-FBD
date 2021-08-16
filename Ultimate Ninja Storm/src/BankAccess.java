@@ -8,6 +8,23 @@ public class BankAccess{
         return bank;
     }
 
+    public String getNamePlayer(String id){
+        ConnectionPGSQL bank = connect();
+        String sql = "SELECT nickname from jogador where id = " + Integer.parseInt(id);
+        ResultSet result = bank.select(sql);
+        try{
+            String namePlayer = null;
+            while(result.next()){
+                namePlayer = result.getString("nickname");
+            }
+            bank.disconnect();
+            return namePlayer;
+        }catch(Exception e){
+            e.printStackTrace();
+        }bank.disconnect();
+        return null;
+    }
+
     public void deleteAttacks(int id){
         ConnectionPGSQL bank = connect();
         String sql = "DELETE FROM attacks where personagem = " + id;
@@ -152,10 +169,12 @@ public class BankAccess{
             int especial = 0;
             while(result.next()){
                 especial = result.getInt("especial");
-            }return especial;
+            }bank.disconnect();
+            return especial;
         }catch (Exception e) {
             e.printStackTrace();
-        }return 0;
+        }bank.disconnect();
+        return 0;
     }
 
     public int getAttack(int tipo, String nome){
@@ -167,7 +186,8 @@ public class BankAccess{
             int attack = 0;
             while(result.next()){
                 attack = result.getInt("força");
-            }return attack;
+            }bank.disconnect();
+            return attack;
         }catch (Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -179,10 +199,11 @@ public class BankAccess{
         String sql = "SELECT id FROM Characters WHERE nome = '" + nome + "'";
         ResultSet result= bank.select(sql);
         try{
+            int id = 0;
             while(result.next()) {
-                int id = result.getInt("id");
-                return id;
-            }
+                id = result.getInt("id");
+            }bank.disconnect();
+            return id;
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -207,6 +228,7 @@ public class BankAccess{
                     agilidade = result.getInt("agilidade");
                 }
             Characters player = new Characters(nome, vida, chakra, especial, agilidade);
+            bank.disconnect();
             return player;
         }catch(Exception e){
             e.printStackTrace();
