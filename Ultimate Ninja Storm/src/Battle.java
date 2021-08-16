@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Battle{
-
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
@@ -124,7 +123,7 @@ public class Battle{
                 System.out.println("Erro: Comando inválido");
             }
             AdversarySystem AdversarySystem = new AdversarySystem();
-            AdversarySystem.Comandos(player, adversary);
+            AdversarySystem.commands(player, adversary);
             System.out.println("\n" + player.toString());
             System.out.println(adversary.toString() + "\n");
         }

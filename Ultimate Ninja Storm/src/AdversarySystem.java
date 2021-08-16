@@ -1,7 +1,6 @@
 import java.util.Random;
 
 public class AdversarySystem{
-
     private void attack(Characters adversary, Characters player, Random random){
         int attackadversary = random.nextInt(3);
         if(attackadversary != 3){
@@ -33,7 +32,7 @@ public class AdversarySystem{
             System.out.println("Seu oponente é muito forte, mas ele não é pareo pra você!");
     }
     
-    public void Comandos(Characters player, Characters adversary){
+    public void commands(Characters player, Characters adversary){
         Random random = new Random();
         int movimentoadversary = random.nextInt(6);
 

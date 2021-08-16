@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class Menu {
-    
+public class Menu{
     public void menu(String namePlayer){
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();

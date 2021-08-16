@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class LoadScreen{
-
     private static void loadGame(Scanner input){
         System.out.println("\nNARUTO ULTIMATE NINJA STORM!\n");
         BankAccess bank = new BankAccess();
@@ -63,3 +62,8 @@ public class LoadScreen{
 //Fezer ranking
 //Ajeitar ver personagens - configurações
 //Add opção de ver seu game?
+//Ajeitar tabelas
+//Criar trigget de login
+//Criar view
+//Organizar readme git
+//Fazer slide sobre o projeto com url do repositório

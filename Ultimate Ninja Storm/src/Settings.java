@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Settings{
-
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
