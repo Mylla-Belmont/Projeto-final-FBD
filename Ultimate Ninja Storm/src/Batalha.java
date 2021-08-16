@@ -8,7 +8,7 @@ public class Batalha{
             System.out.println("Aperte X para sair...");
             String res = input.nextLine();
             if(res.equals("x")){
-                ModoDuelo voltaMenuDuelo = new ModoDuelo();
+                DuelMode voltaMenuDuelo = new DuelMode();
                 voltaMenuDuelo.menuDuelo();
             }else
                 System.out.println("fail: Comando inválido");
@@ -31,7 +31,7 @@ public class Batalha{
     private void Desistir(Personagens jogador) throws Exception{
         System.out.println(jogador.nome + " desistiu da luta!");
         System.out.println("\n--------------------------------\n");
-        ModoDuelo voltaMenuDuelo = new ModoDuelo();
+        DuelMode voltaMenuDuelo = new DuelMode();
         voltaMenuDuelo.menuDuelo();
     }
 

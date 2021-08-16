@@ -1,29 +1,29 @@
 import java.util.Scanner;
 
-public class Configuracoes{
+public class Settings{
 
-    private void sair(Scanner input) throws Exception{
+    private void Exit(Scanner input) throws Exception{
         while(true){
             System.out.println("Aperte X para sair...");
-            String entrada = input.nextLine();
-            if(entrada.equals("x")){
-                menuConfiguracoes();
+            String line = input.nextLine();
+            if(line.equals("x")){
+                SettingsMenu();
             }else
                 System.out.println("fail: Comando inválido");
         }
     }
 
-    private void removerPersonagem(Scanner input) throws Exception{
+    private void RemoveCharacter(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
         banco.listPersonagens();
         System.out.println("Digite o número do personagem para remove-lo...");
-        String entrada = input.nextLine();
-        banco.deleteAtaques(Integer.parseInt(entrada));
-        banco.deletePersonagem(Integer.parseInt(entrada));
-        sair(input);
+        String line = input.nextLine();
+        banco.deleteAtaques(Integer.parseInt(line));
+        banco.deletePersonagem(Integer.parseInt(line));
+        Exit(input);
     }
 
-    private void adicionarPersonagem(Scanner input) throws Exception{
+    private void AddCharacter(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
         System.out.println("Nome do personagem...");
             String nome = input.nextLine();
@@ -42,16 +42,16 @@ public class Configuracoes{
         System.out.println("\nNome do ataque 3...");
             String ataque3 = input.nextLine();
         banco.addAtaques(id, ataque3, 30, 2);
-        sair(input);
+        Exit(input);
     }
 
-    private void verPersonagem(Scanner input) throws Exception{
+    private void SeeCharacters(Scanner input) throws Exception{
         AcessoBanco banco = new AcessoBanco();
         banco.getAllPersonagens();
-        sair(input);
+        Exit(input);
     }
 
-    public void menuConfiguracoes() throws Exception{
+    public void SettingsMenu() throws Exception{
         Appearance appearance = new Appearance();
         Scanner input = new Scanner(System.in);
 
@@ -68,15 +68,15 @@ public class Configuracoes{
 
             if(entrada.equals("1")){
                 appearance.CleanScreen();
-                verPersonagem(input);
+                SeeCharacters(input);
                 
             }else if(entrada.equals("2")){
                 appearance.CleanScreen();
-                adicionarPersonagem(input);
+                AddCharacter(input);
 
             }else if(entrada.equals("3")){
                 appearance.CleanScreen();
-                removerPersonagem(input);
+                RemoveCharacter(input);
 
             }else if(entrada.equals("4")){
                 appearance.CleanScreen();

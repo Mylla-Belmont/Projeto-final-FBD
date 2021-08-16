@@ -20,16 +20,16 @@ public class Menu {
 
             if(line.equals("1")){
                 appearance.CleanScreen();
-                ModoDuelo duelo = new ModoDuelo();
-                duelo.menuDuelo();
+                DuelMode duel = new DuelMode();
+                duel.menuDuelo();
                 
             }else if(line.equals("2")){
                 appearance.CleanScreen();
             
             }else if(line.equals("3")){
                 appearance.CleanScreen();
-                Configuracoes configuracoes = new Configuracoes();
-                configuracoes.menuConfiguracoes();
+                Settings settings = new Settings();
+                settings.SettingsMenu();
             
             }else if(line.equals("4")){
                 appearance.CleanScreen();

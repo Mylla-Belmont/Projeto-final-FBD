@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class ModoDuelo{
+public class DuelMode{
 
     private Personagens escolherAleatorio(){
         Random random = new Random();
