@@ -50,7 +50,8 @@ public class DuelMode{
                 appearance.CleanScreen();
 
             }else if(line.equals("3")){
-                Menu.main(null);
+                Menu menu = new Menu();
+                menu.menu();
             }else{
                 appearance.CleanScreen();
                 continue;

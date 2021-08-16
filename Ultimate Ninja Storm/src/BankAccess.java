@@ -23,8 +23,7 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
     }
 
     public void deleteCharacters(int id){
@@ -42,8 +41,24 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
+    }
+
+    public void addPlayer(String nome){
+        ConnectionPGSQL bank = conectar();
+        String sql = "insert into jogador (id, nickname, vitorias, derrotas, pontuação) values (default, '" + nome + "', 0, 0, 0)";
+        int result= bank.update(sql);
+        try{
+            while(true){
+                if(result> 0){
+                    bank.Desconectar();
+                    break;
+                }else
+                    System.out.println("fail: Erro ao adicionar jogador...");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }bank.Desconectar();
     }
 
     public void addAttack(int id, String attack, int força, int tipo){
@@ -53,7 +68,7 @@ public class BankAccess{
         try{
             while(true){
                 if(result> 0){
-                    System.out.println("\nattack configurado!");
+                    System.out.println("\nAtaque configurado!");
                     bank.Desconectar();
                     break;
                 }else
@@ -61,8 +76,7 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
     }
 
     public void addCharacters(String nome, int agilidade, int especial){
@@ -79,10 +93,24 @@ public class BankAccess{
                 }else
                     System.out.println("fail: Erro ao adicionar personagem...");
             }
-        }catch (Exception e){
+        }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
+    }
+
+    public void getPlayers(){
+        ConnectionPGSQL bank = conectar();
+        String sql = "SELECT id, nickname from jogador";
+        ResultSet result = bank.select(sql);
+        try {
+            while(result.next()) {
+                int id = result.getInt("id");
+                String nome = result.getString("nickname");
+                System.out.println(id + " - " + nome);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }bank.Desconectar();
     }
 
     public void getAllCharacters(){
@@ -98,8 +126,7 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
     }
 
     public String getNameAttack(int tipo, String nomePersonagem){
@@ -111,28 +138,24 @@ public class BankAccess{
             String nomeattack = null;
             while(result.next()) {
                 nomeattack = result.getString("nome");
-            } 
-            return nomeattack;
-        }catch (Exception e) {
+            }return nomeattack;
+        }catch(Exception e){
             e.printStackTrace();
-        }
-        return null;
+        }return null;
     }
 
     public int getSpecial(String nome){
         ConnectionPGSQL bank = conectar();
         String sql = "select especial from Characters where nome = '" + nome + "' ";
         ResultSet result= bank.select(sql);
-        try {
+        try{
             int especial = 0;
             while(result.next()){
                 especial = result.getInt("especial");
-            } 
-            return especial;
-        } catch (Exception e) {
+            }return especial;
+        }catch (Exception e) {
             e.printStackTrace();
-        }
-        return 0;
+        }return 0;
     }
 
     public int getAttack(int tipo, String nome){
@@ -144,12 +167,10 @@ public class BankAccess{
             int attack = 0;
             while(result.next()){
                 attack = result.getInt("força");
-            }
-            return attack;
+            }return attack;
         }catch (Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
         return 0;
     }
 
@@ -164,7 +185,7 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
+        }bank.Desconectar();
         return 0;
     }
 
@@ -189,8 +210,7 @@ public class BankAccess{
             return player;
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
         return null;
     }
 
@@ -206,7 +226,6 @@ public class BankAccess{
             }
         }catch(Exception e){
             e.printStackTrace();
-        }
-        bank.Desconectar();
+        }bank.Desconectar();
     }
 }

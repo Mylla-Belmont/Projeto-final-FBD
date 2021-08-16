@@ -18,14 +18,24 @@ create table Characters(
 	constraint id_pk primary key(id)
 );
 
+create table Jogador(
+	idJogador serial not null,
+	nickname varchar(20),
+	vitorias integer,
+	derrotas integer,
+	pontuação integer,
+
+	CONSTRAINT idJogador_pkey PRIMARY KEY(idJogador)
+);
+
 INSERT into Characters(id, nome, vida, chakra, agilidade, especial) 
 values (DEFAULT, 'Bribinha', 100, 100, 50, 10)
 
 DELETE from Characters where id = 8
 
+alter table jogador rename idjogador to id
 
-
-SELECT * from Characters
+SELECT * from jogador
 
 alter table Characters RENAME nomeespecial to attack1
 
@@ -66,8 +76,10 @@ update attacks set tipo = 2 where nome = 'Rasengan'
 
 select A.força from attacks A, Characters P where A.tipo = 0 and A.personagem = P.id and P.nome = 'Naruto'
 
-select coisa coisa 
+select * from jogador 
 
 SELECT P.nome, P.agilidade, P.especial, A.nome from Characters P, attacks A where P.id = A.personagem
 
 DELETE FROM Characters where id = 17
+
+insert into jogador (id, nickname, vitorias, derrotas, pontuação) values (default, 'Bribinha', 0, 0, 0)

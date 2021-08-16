@@ -81,7 +81,8 @@ public class Settings{
             }else if(line.equals("4")){
                 appearance.CleanScreen();
                 input.close();
-                Menu.main(null);
+                Menu menu = new Menu();
+                menu.menu();
                 break;
             }else
                 continue;

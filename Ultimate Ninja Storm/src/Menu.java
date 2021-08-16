@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
 public class Menu {
-    public static void main(String[] args) throws Exception {
+    
+    public void menu() throws Exception{
 
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
-
+        
         while(true){
             appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
@@ -43,10 +44,3 @@ public class Menu {
         input.close();
     }
 }
-
-//Criar metodo para alterar tabela e inserir informações
-//Mudar nome variaveis (pra ficar bonito kkk)
-//Fazer opção novo jogo
-//Fazer opção carregar jogo
-//Reorganizar código
-//Criar nova tabela para Characters novos
