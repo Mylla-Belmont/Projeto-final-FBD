@@ -30,13 +30,15 @@ public class conexaoPGSQL{
     }
 
     //Inseri valores dentro do banco
-    public void update(String sql){
+    public int update(String sql){
         try {
             Statement stmt = con.createStatement(); 
-            stmt.executeUpdate(sql);
+            int res = stmt.executeUpdate(sql);
             con.close();
+            return res;
         } catch (Exception e) {
             e.printStackTrace();
+            return 0;
         }
     }
 

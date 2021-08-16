@@ -18,6 +18,11 @@ create table personagens(
 	constraint id_pk primary key(id)
 );
 
+INSERT into personagens(id, nome, vida, chakra, agilidade, especial) 
+values (DEFAULT, 'Bribinha', 100, 100, 50, 10)
+
+DELETE from personagens where id = 7
+
 SELECT * from personagens
 
 alter table personagens RENAME nomeespecial to ataque1
@@ -40,7 +45,9 @@ create table ataques(
     CONSTRAINT personagens_fkey FOREIGN key (personagem) REFERENCES personagens(id)
 )
 
-SELECT * from ataques
+SELECT * from personagens
+
+insert into personagens (id, nome, vida, chakra, agilidade, especial) values (default, )
 
 insert into ataques (personagem, id, nome, força) values (1, 1, 'Jutsu saxy', 10)
 insert into ataques (personagem, id, nome, força) values (1, 2, 'Jutsu Multiclone das sombras', 20)

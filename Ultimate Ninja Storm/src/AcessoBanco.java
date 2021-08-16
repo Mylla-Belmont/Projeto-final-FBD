@@ -8,6 +8,22 @@ public class AcessoBanco{
         return banco;
     }
 
+    public void addPersonagem(String nome, int agilidade, int especial){
+        conexaoPGSQL banco = conectar();
+        String sql = "INSERT INTO personagens(id ,nome, vida, chakra, agilidade, especial)" +
+                     "VALUES(default,'"+nome+"',100,100, "+agilidade+", "+especial+")";
+        int res = banco.update(sql);
+        while(true){
+            if(res > 0){
+                System.out.println("\n" + nome + " adicionado com sucesso!");
+                banco.Desconectar();
+                break;
+            }else
+                System.out.println("fail: Erro ao adicionar personagem...");
+        }
+        banco.Desconectar();
+    }
+
     public void getAllPersonagens(){
         conexaoPGSQL banco = conectar();
         String sql = "SELECT P.nome, P.agilidade, P.especial from personagens P";
@@ -27,7 +43,8 @@ public class AcessoBanco{
 
     public String getNomeAtaque(int tipo, String nomePersonagem){
         conexaoPGSQL banco = conectar();
-        String sql = "select A.nome from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
+        String sql = "select A.nome from ataques A, personagens P where A.tipo = '" + tipo + 
+                     "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
         ResultSet resultado = banco.select(sql);
         try{
             String nomeAtaque = null;
@@ -59,7 +76,8 @@ public class AcessoBanco{
 
     public int getAtaque(int tipo, String nome){
         conexaoPGSQL banco = conectar();
-        String sql = "select A.força from ataques A, personagens P where A.tipo = '" + tipo + "' and A.personagem = P.id and P.nome = '" + nome + "' ";
+        String sql = "select A.força from ataques A, personagens P where A.tipo = '" + tipo + 
+                     "' and A.personagem = P.id and P.nome = '" + nome + "' ";
         ResultSet resultado = banco.select(sql);
         try{
             int ataque = 0;
