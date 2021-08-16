@@ -15,10 +15,15 @@ public class LoadScreen{
         String nome = input.nextLine();
         BankAccess bank = new BankAccess();
         bank.addPlayer(nome);
-        //Chamar menu, passar load
+        Menu menu = new Menu();
+        try{
+            menu.menu();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
@@ -51,3 +56,4 @@ public class LoadScreen{
 //Fazer opção carregar jogo
 //Reorganizar código
 //Criar nova tabela para Characters novos
+//Mudar todos os throws para try catch
