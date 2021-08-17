@@ -147,6 +147,24 @@ public class BankAccess{
         }bank.disconnect();
     }
 
+    public void getRanking(){
+        ConnectionPGSQL bank = connect();
+        String sql = "SELECT nickname, vitorias from jogador";
+        ResultSet result = bank.select(sql);
+        try{
+            String nickname = null;
+            int vitorias = 0;
+            while(result.next()){
+                nickname = result.getString("nickname");
+                vitorias = result.getInt("vitorias");
+                System.out.println("--------------------------------");
+                System.out.println("\n" + nickname + " - " + vitorias + " vitórias\n");
+            }bank.disconnect();
+        }catch(Exception e){
+            e.printStackTrace();
+        }bank.disconnect();
+    }
+
     public int getIdPlayer(String name){
         ConnectionPGSQL bank = connect();
         String sql = "SELECT id from jogador where nickname = '" + name + "'";

@@ -51,7 +51,6 @@ public class LoadScreen{
         }else if(line.equals("2")){
             appearance.CleanScreen();
             loadGame(input);
-            //Carragar informações do jogo
         } 
         input.close();
     }

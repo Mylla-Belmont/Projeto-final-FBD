@@ -28,6 +28,12 @@ public class Menu{
                 
             }else if(line.equals("2")){
                 appearance.CleanScreen();
+                Ranking ranking = new Ranking();
+                try{
+                    ranking.system(namePlayer);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }break;
             
             }else if(line.equals("3")){
                 appearance.CleanScreen();
