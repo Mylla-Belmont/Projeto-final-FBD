@@ -1,6 +1,6 @@
 # Projeto final
 
-<br>Fundamentos de banco de dados
-<br>Camila Belmont Mesquita
+* Fundamentos de banco de dados
+* Camila Belmont Mesquita
 
-<b>Ultimate Ninja Storm</b>
+### Ultimate Ninja Storm
