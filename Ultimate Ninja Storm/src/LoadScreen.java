@@ -56,24 +56,26 @@ public class LoadScreen{
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
 
-        appearance.CleanScreen();
-        System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
-        System.out.println("\n1 - Novo jogo");
-        System.out.println("2 - Carrregar jogo\n");
-
-        String line = input.nextLine();                             
-        System.out.println("\n");
-
-        if(line.equals("1")){
+        while(true){
             appearance.CleanScreen();
-            newGame(input);
-        
-        }else if(line.equals("2")){
-            appearance.CleanScreen();
-            loadGame(input, appearance);
-        } 
-        input.close();
-        //Add fail numero errado
+            System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
+            System.out.println("\n1 - Novo jogo");
+            System.out.println("2 - Carrregar jogo\n");
+
+            String line = input.nextLine();                             
+            System.out.println("\n");
+
+            if(line.equals("1")){
+                appearance.CleanScreen();
+                newGame(input);
+            
+            }else if(line.equals("2")){
+                appearance.CleanScreen();
+                loadGame(input, appearance);
+            }else
+                continue;
+            input.close();
+        }
     }
 }
 

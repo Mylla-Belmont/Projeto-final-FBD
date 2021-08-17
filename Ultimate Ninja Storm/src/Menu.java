@@ -32,7 +32,6 @@ public class Menu{
                     ranking.system(namePlayer);
                 }catch(Exception e){
                     e.printStackTrace();
-                    //Criar voltar
                 }
             }else if(line.equals("3")){
                 appearance.CleanScreen();
