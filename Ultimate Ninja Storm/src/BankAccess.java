@@ -10,7 +10,7 @@ public class BankAccess{
 
     public void deleteAttacks(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "DELETE FROM ataques where personagem = " + id;
+        String sql = "delete from ataques where personagem = " + id;
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -24,7 +24,7 @@ public class BankAccess{
 
     public void deleteCharacters(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "DELETE FROM personagens where id = " + id;
+        String sql = "delete from personagens where id = " + id;
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -38,7 +38,7 @@ public class BankAccess{
 
     public void addPlayerDefeat(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "UPDATE jogador SET derrotas = derrotas + 1 where id = " + id;
+        String sql = "update jogador set derrotas = derrotas + 1 where id_jogador = " + id;
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -52,7 +52,7 @@ public class BankAccess{
 
     public void addPlayerWin(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "UPDATE jogador SET vitorias = vitorias + 1 where id = " + id;
+        String sql = "update jogador set vitorias = vitorias + 1 where id_jogador = " + id;
         int result= bank.update(sql);
         try{ 
             if(result> 0){
@@ -66,7 +66,7 @@ public class BankAccess{
 
     public void addPlayer(String nome){
         ConnectionPGSQL bank = connect();
-        String sql = "insert into jogador (id, nickname, vitorias, derrotas) values (default, '" + nome + "', 0, 0)";
+        String sql = "insert into jogador(id_jogador, nickname, vitorias, derrotas) values (default, '" + nome + "', 0, 0)";
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -81,7 +81,7 @@ public class BankAccess{
 
     public void addAttack(int personagem, String attack, int força, int tipo){
         ConnectionPGSQL bank = connect();
-        String sql = "INSERT INTO ataques(id, personagem, nome, força, tipo) values(default, " + personagem + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
+        String sql = "insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, " + personagem + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -96,8 +96,8 @@ public class BankAccess{
 
     public void addCharacters(String nome, int agilidade, int especial){
         ConnectionPGSQL bank = connect();
-        String sql = "INSERT INTO personagens(id ,nome, vida, chakra, agilidade, especial)" +
-                     "VALUES(default,'"+nome+"',100,100, "+agilidade+", "+especial+")";
+        String sql = "insert into personagens(id_personagem ,nome, vida, chakra, agilidade, especial)" +
+                     "values(default,'" + nome + "',100,100, " + agilidade + ", " + especial + ")";
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -112,7 +112,7 @@ public class BankAccess{
 
     public String getNamePlayer(String id){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT nickname from jogador where id = " + Integer.parseInt(id);
+        String sql = "select nickname from jogador where id_jogador = " + Integer.parseInt(id);
         ResultSet result = bank.select(sql);
         try{
             String namePlayer = null;
@@ -129,7 +129,7 @@ public class BankAccess{
 
     public void getRanking(){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT nickname, vitorias from jogador";
+        String sql = "select nickname, vitorias from jogador";
         ResultSet result = bank.select(sql);
         try{
             String nickname = null;
@@ -148,7 +148,7 @@ public class BankAccess{
 
     public int getIdPlayer(String name){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT id from jogador where nickname = '" + name + "'";
+        String sql = "select id_jogador from jogador where nickname = '" + name + "'";
         ResultSet result = bank.select(sql);
         try{
             int id = 0;
@@ -164,7 +164,7 @@ public class BankAccess{
 
     public int getPlayers(){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT id, nickname from jogador";
+        String sql = "select id_jogador, nickname from jogador";
         ResultSet result = bank.select(sql);
         try{
             int id = 0;
@@ -173,8 +173,7 @@ public class BankAccess{
                 id = result.getInt("id");
                 nome = result.getString("nickname");
                 System.out.println(id + " - " + nome);
-            }
-            if(nome.equals(null)){
+            }if(nome.equals(null)){
                 bank.disconnect();
                 return 0;
             }else
@@ -187,7 +186,7 @@ public class BankAccess{
 
     public void getAllCharacters(){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT P.nome, P.agilidade, P.especial from personagens P";
+        String sql = "select P.nome, P.agilidade, P.especial from personagens P";
         ResultSet result= bank.select(sql);
         try{
             while(result.next()){
@@ -204,7 +203,7 @@ public class BankAccess{
     public String getNameAttack(int tipo, String nomePersonagem){
         ConnectionPGSQL bank = connect();
         String sql = "select A.nome from ataques A, personagens P where A.tipo = '" + tipo + 
-                     "' and A.personagem = P.id and P.nome = '" + nomePersonagem + "' ";
+                     "' and A.personagem = P.id_personagem and P.nome = '" + nomePersonagem + "' ";
         ResultSet result= bank.select(sql);
         try{
             String nomeattack = null;
@@ -235,7 +234,7 @@ public class BankAccess{
     public int getAttack(int tipo, String nome){
         ConnectionPGSQL bank = connect();
         String sql = "select A.força from ataques A, personagens P where A.tipo = '" + tipo + 
-                     "' and A.personagem = P.id and P.nome = '" + nome + "' ";
+                     "' and A.personagem = P.id_personagem and P.nome = '" + nome + "' ";
         ResultSet result= bank.select(sql);
         try{
             int attack = 0;
@@ -251,7 +250,7 @@ public class BankAccess{
 
     public int getIdCharacters(String nome){
         ConnectionPGSQL bank = connect();
-        String sql = "SELECT id FROM personagens WHERE nome = '" + nome + "'";
+        String sql = "select id_personagem from personagens where nome = '" + nome + "'";
         ResultSet result= bank.select(sql);
         try{
             int id = 0;
@@ -265,9 +264,9 @@ public class BankAccess{
         return 0;
     }
 
-    public Characters getCharacters(int line){
+    public Characters getCharacters(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "select nome, vida, chakra, especial, agilidade from personagens where id = '" + line + "' ";
+        String sql = "select nome, vida, chakra, especial, agilidade from personagens where id_personagem = '" + id + "' ";
         ResultSet result= bank.select(sql);
         try{
             String nome = null;
@@ -293,7 +292,7 @@ public class BankAccess{
 
     public void listCharacters(){ 
         ConnectionPGSQL bank = connect();
-        String sql = "select id, nome from personagens";
+        String sql = "select id_personagem, nome from personagens";
         ResultSet result= bank.select(sql);
         try{
             while(result.next()){
