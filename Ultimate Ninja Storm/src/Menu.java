@@ -43,9 +43,7 @@ public class Menu{
                 }
             }else if(line.equals("4")){
                 appearance.CleanScreen();
-                System.out.println("\n----------------------------------------\n");
-                System.out.println("\n\n   Até o próximo treinamento ninja!\n\n");
-                System.out.println("\n----------------------------------------\n");  
+                LoadScreen.main(null);
                 break;
             }else
                 continue;

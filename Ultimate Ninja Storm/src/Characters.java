@@ -55,7 +55,7 @@ public class Characters {
     }
 
     public boolean activateSpecial(){         
-        if(especial  == 10 && chakra >= 60){
+        if(especial  >= 10 && chakra >= 60){
             especial -= 10;
             verificarChakra(60);
             return true;

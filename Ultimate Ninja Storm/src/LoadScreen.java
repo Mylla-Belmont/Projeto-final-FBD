@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class LoadScreen{
-
     private static void exit(Scanner input){
         try{
             while(true){
@@ -60,7 +59,8 @@ public class LoadScreen{
             appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\n1 - Novo jogo");
-            System.out.println("2 - Carrregar jogo\n");
+            System.out.println("2 - Carrregar jogo");
+            System.out.println("3 - Fechar jogo");
 
             String line = input.nextLine();                             
             System.out.println("\n");
@@ -68,10 +68,15 @@ public class LoadScreen{
             if(line.equals("1")){
                 appearance.CleanScreen();
                 newGame(input);
-            
             }else if(line.equals("2")){
                 appearance.CleanScreen();
                 loadGame(input, appearance);
+            }else if(line.equals("3")){
+                appearance.CleanScreen();
+                System.out.println("\n---------------------------------------\n");
+                System.out.println("    Até o próximo treinamento ninja! ");
+                System.out.println("\n---------------------------------------\n");
+                break;
             }else
                 continue;
             input.close();
@@ -79,8 +84,8 @@ public class LoadScreen{
     }
 }
 
+//Ajeitar alguns outputs
 //Reorganizar código
-//jeitar voltar ao menu
 //Ajeitar tabelas
 //Organizar readme git
 //Fazer slide sobre o projeto com url do repositório

@@ -4,7 +4,7 @@ public class Settings{
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
-                System.out.println("Aperte X para sair...");
+                System.out.println("\nAperte X para confirmar saida...");
                 String line = input.nextLine();
                 if(line.equals("x")){
                     SettingsMenu(namePlayer);
@@ -19,12 +19,17 @@ public class Settings{
     private void removeCharacter(Scanner input, String namePlayer){
         BankAccess bank = new BankAccess();
         bank.listCharacters();
+        System.out.println("\nX - Cancelar");
         System.out.println("\nDigite o número do personagem para remove-lo...");
         String line = input.nextLine();
-        bank.deleteAttacks(Integer.parseInt(line));
-        bank.deleteCharacters(Integer.parseInt(line));
-        exit(input, namePlayer);
-    }
+            if(line.equals("x")){
+                exit(input, namePlayer);
+            }else{
+                bank.deleteAttacks(Integer.parseInt(line));
+                bank.deleteCharacters(Integer.parseInt(line));
+                exit(input, namePlayer);
+            }
+        }
 
     private void addAttacks(Scanner input, BankAccess bank, String nome){
         int id = bank.getIdCharacters(nome);
@@ -41,15 +46,29 @@ public class Settings{
 
     private void addCharacter(Scanner input, String namePlayer){
         BankAccess bank = new BankAccess();
-        System.out.println("Nome do personagem...");
-        String nome = input.nextLine();
-            System.out.println("\nTotal de agilidade do personagem...");
-            String agilidade = input.nextLine();
+        String nome = null;
+        String agilidade = null;
+        String especial = null;
+        System.out.println("\nx - Cancelar");
+        System.out.println("\nNome do personagem...");
+        nome = input.nextLine();
+            if(nome.equals("x")){
+                exit(input, namePlayer);
+            }else{
+                System.out.println("\nTotal de agilidade do personagem...");
+                agilidade = input.nextLine();
+            }if(agilidade.equals("x")){
+                exit(input, namePlayer);
+            }else{
                 System.out.println("\nForça do especial...");
-                String especial = input.nextLine();
-        bank.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
-        addAttacks(input, bank, nome);
-        exit(input, namePlayer);
+                especial = input.nextLine();
+            }if(especial.equals("x")){
+                exit(input, namePlayer);
+            }else{
+                bank.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
+                addAttacks(input, bank, nome);
+                exit(input, namePlayer);
+            }
     }
 
     private void seeCharacters(Scanner input, String namePlayer){
