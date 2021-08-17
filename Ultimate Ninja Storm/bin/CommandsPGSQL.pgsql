@@ -55,6 +55,7 @@ insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 
 /* "nome das variaveis" */
 
 /* listCharacters------>*/select id_personagem, nome from personagens
+/* getNumCharacters------>*/select id_personagem, nome from personagens
 /* getCharacters------>*/select nome, vida, chakra, especial, agilidade from personagens where id_personagem = "id"
 /* getIdCharacters------>*/select id_personagem from personagens where nome = "nome"
 /* getAttack------>*/select A.força from ataques A, personagens P where A.tipo = "tipo" and A.personagem = P.id_personagem and P.nome = "nome"
@@ -67,17 +68,14 @@ insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 
 /* getNamePlayer------>*/select nickname from jogador where id_jogador = "id"
 
 /*Inserts usados no jogo*/
-
 /* addCharacters------>*/insert into personagens(id_personagem ,nome, vida, chakra, agilidade, especial) values(default, "nome",100,100, "agilidade", "especial")
 /* addAttack------>*/insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, "id_personagem", "nome", "força", "tipo")
 /* addPlayer------>*/insert into jogador (id_jogador, nickname, vitorias, derrotas) values(default, "nome", 0, 0)
 
 /*Updates usados no jogo*/
-
 /* addPlayerWin------>*/update jogador set vitorias = vitorias + 1 where id_jogador = "id"
 /* addPlayerDefeat------>*/update jogador set derrotas = derrotas + 1 where id_jogador = "id"
 
 /*Deletes usados no jogo*/
-
 /* deleteCharacters------>*/delete from personagens where id_personagem = "id"
 /* deleteCharacters------>*/delete from ataques where personagem = "id"

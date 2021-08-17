@@ -22,7 +22,7 @@ public class Battle{
         int id = bank.getIdPlayer(namePlayer);
         if(player.estaVivo() && !adversary.estaVivo()){
             System.out.println("VOCÊ GANHOU!");
-            System.out.println("Hokage: -Parabéns" + player.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
+            System.out.println("Hokage: -Parabéns " + player.nome + ", apesar de suas poucas habilidades, foi uma ótima luta.\n\n");
             bank.addPlayerWin(id);
         }else if(adversary.estaVivo() && !player.estaVivo()){  
             System.out.println("VOCÊ PERDEU!"); 

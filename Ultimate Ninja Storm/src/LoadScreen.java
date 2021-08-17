@@ -83,10 +83,3 @@ public class LoadScreen{
         }
     }
 }
-
-//Ajeitar alguns outputs
-//Reorganizar código
-//Ajeitar tabelas
-//Organizar readme git
-//Fazer slide sobre o projeto com url do repositório
-//Criar arquivo com código das tabelas postgeeSQL

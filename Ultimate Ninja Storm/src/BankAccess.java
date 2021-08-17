@@ -1,7 +1,6 @@
 import java.sql.ResultSet;
 
 public class BankAccess{
-    
     private ConnectionPGSQL connect(){
         ConnectionPGSQL bank = new ConnectionPGSQL();
         bank.connect("jdbc:postgresql://localhost:5432/Projeto_Ninja", "postgres", "creepypasta");  
@@ -108,6 +107,21 @@ public class BankAccess{
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
+    }
+
+    public int getNumCharacters(){
+        ConnectionPGSQL bank = connect();
+        String sql = "select id_personagem, nome from personagens";
+        ResultSet result= bank.select(sql);
+        int cont = 0;
+        try{
+            while(result.next()){
+                cont++;
+            }return cont;
+        }catch(Exception e){
+            e.printStackTrace();
+        }bank.disconnect();
+        return 0;
     }
 
     public String getNamePlayer(String id){

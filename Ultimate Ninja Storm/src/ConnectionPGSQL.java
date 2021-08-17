@@ -2,7 +2,6 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class ConnectionPGSQL{
-
     Connection connection = null;
 
     public void connect(String strEnd, String strUsuario, String strSenha) {

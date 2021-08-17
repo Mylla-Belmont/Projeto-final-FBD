@@ -5,10 +5,16 @@ public class DuelMode{
 
     private Characters ChooseRandom(){
         Random random = new Random();
-        int aleatory = random.nextInt(3);     //Pesquisar como saber tamanho do bank
         BankAccess bank = new BankAccess();
-        Characters personagem = bank.getCharacters(aleatory);  
-        return personagem;
+        int size = bank.getNumCharacters();
+        int aleatory = random.nextInt(size);
+        if(aleatory == 0){
+            aleatory++;
+        }else{
+            Characters personagem = bank.getCharacters(aleatory); 
+            return personagem;
+        } 
+        return null;
     }
 
     private Characters ChooseCharacter(Scanner input, String tipo){
@@ -38,9 +44,9 @@ public class DuelMode{
 
             if(line.equals("1")){
                 appearance.CleanScreen();
-                player = ChooseCharacter(input, "player");
+                player = ChooseCharacter(input, "personagem");
                 appearance.CleanScreen();
-                adversary = ChooseCharacter(input, "adversary");
+                adversary = ChooseCharacter(input, "adversario");
                 appearance.CleanScreen();
 
             }else if(line.equals("2")){
