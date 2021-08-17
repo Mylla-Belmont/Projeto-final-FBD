@@ -60,10 +60,10 @@ public class LoadScreen{
 //Reorganizar código
 //jeitar voltar ao menu
 //Fezer ranking
-//Ajeitar ver personagens - configurações
 //Add opção de ver seu game?
 //Ajeitar tabelas
 //Criar trigget de login
 //Criar view
 //Organizar readme git
 //Fazer slide sobre o projeto com url do repositório
+//Criar arquivo com código das tabelas postgeeSQL

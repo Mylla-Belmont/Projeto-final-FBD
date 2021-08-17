@@ -4,7 +4,7 @@ public class Settings{
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
-                System.out.println("Aperte X para exit...");
+                System.out.println("Aperte X para sair...");
                 String line = input.nextLine();
                 if(line.equals("x")){
                     SettingsMenu(namePlayer);
@@ -35,7 +35,6 @@ public class Settings{
         System.out.println("\nForça do especial...");
             String especial = input.nextLine();
         bank.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
-
         int id = bank.getIdCharacters(nome);
         System.out.println("\nNome do attack 1...");
             String attack1 = input.nextLine();
@@ -63,7 +62,7 @@ public class Settings{
             appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
             System.out.println("\nConfigurações...\n");
-            System.out.println("1 - Ver Characters");
+            System.out.println("1 - Ver personagens");
             System.out.println("2 - Adicionar personagm");
             System.out.println("3 - Remover personagem");
             System.out.println("4 - Menu principal\n");

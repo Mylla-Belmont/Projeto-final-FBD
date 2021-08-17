@@ -5,7 +5,7 @@ public class Battle{
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
-                System.out.println("Aperte X para exit...");
+                System.out.println("Aperte X para sair...");
                 String res = input.nextLine();
                 if(res.equals("x")){
                     DuelMode backDuelMenu = new DuelMode();
