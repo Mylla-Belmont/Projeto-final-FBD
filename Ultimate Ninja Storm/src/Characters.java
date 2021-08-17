@@ -46,15 +46,16 @@ public class Characters {
     }
 
     public boolean decreaseAgility(){       
-        if(agilidade >= 5){
-            agilidade -= 10;
-            return true;
+        if(agilidade <= 0){
+            agilidade = 0;
+            return false;
         }
-        return false;
+        agilidade -= 10;
+        return true;
     }
 
     public boolean activateSpecial(){         
-        if(especial  == 10 && chakra >= 90){
+        if(especial  == 10 && chakra >= 60){
             especial -= 10;
             verificarChakra(60);
             return true;
@@ -63,17 +64,17 @@ public class Characters {
     }
 
     public boolean recoverLife(){   
-        if(chakra >= 10 && chakra <= 40 && vida <= 70){
+        if(chakra >= 10 && chakra <= 30 && vida <= 60){
             vida += 30;
             agilidade += 5;
             verificarChakra(20);
             return true;
-        }else if(chakra >= 50 && chakra <= 70 && vida <= 80){
+        }else if(chakra >= 40 && chakra <= 60 && vida <= 70){
             vida += 20;
             agilidade += 10;
             verificarChakra(10);
             return true;
-        }else if(chakra >= 80 && chakra < 100 && vida <= 90){
+        }else if(chakra >= 70 && chakra < 100 && vida <= 80){
             vida += 10;
             agilidade += 20;
             verificarChakra(5);

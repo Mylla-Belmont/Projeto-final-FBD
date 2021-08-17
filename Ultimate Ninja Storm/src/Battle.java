@@ -71,7 +71,7 @@ public class Battle{
     }
 
     private void attack(Characters adversary, Characters player, int attack){
-        if(adversary.decreaseAgility() == false){      
+        if(adversary.decreaseAgility()){      
             System.out.println(adversary.nome + " desviou.");      
         }else{
             adversary.takeDamage(player.attack(attack, player.nome));

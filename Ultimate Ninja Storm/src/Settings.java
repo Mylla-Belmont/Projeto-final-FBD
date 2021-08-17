@@ -26,25 +26,29 @@ public class Settings{
         exit(input, namePlayer);
     }
 
+    private void addAttacks(Scanner input, BankAccess bank, String nome){
+        int id = bank.getIdCharacters(nome);
+        System.out.println("\nNome do attack 1...");
+        String attack1 = input.nextLine();
+        bank.addAttack(id, attack1, 10, 0);
+            System.out.println("\nNome do attack 2...");
+            String attack2 = input.nextLine();
+            bank.addAttack(id, attack2, 20, 1);
+                System.out.println("\nNome do attack 3...");
+                String attack3 = input.nextLine();
+                bank.addAttack(id, attack3, 30, 2);
+    }
+
     private void addCharacter(Scanner input, String namePlayer){
         BankAccess bank = new BankAccess();
         System.out.println("Nome do personagem...");
-            String nome = input.nextLine();
-        System.out.println("\nTotal de agilidade do personagem...");
+        String nome = input.nextLine();
+            System.out.println("\nTotal de agilidade do personagem...");
             String agilidade = input.nextLine();
-        System.out.println("\nForça do especial...");
-            String especial = input.nextLine();
+                System.out.println("\nForça do especial...");
+                String especial = input.nextLine();
         bank.addCharacters(nome, Integer.parseInt(agilidade), Integer.parseInt(especial));
-        int id = bank.getIdCharacters(nome);
-        System.out.println("\nNome do attack 1...");
-            String attack1 = input.nextLine();
-            bank.addAttack(id, attack1, 10, 0);
-        System.out.println("\nNome do attack 2...");
-            String attack2 = input.nextLine();
-            bank.addAttack(id, attack2, 20, 1);
-        System.out.println("\nNome do attack 3...");
-            String attack3 = input.nextLine();
-            bank.addAttack(id, attack3, 30, 2);
+        addAttacks(input, bank, nome);
         exit(input, namePlayer);
     }
 

@@ -24,9 +24,9 @@ public class LoadScreen{
         if(result > 0){
             System.out.println("\nQual o seu save?\n");
             String id = input.nextLine();
-            String namePlayer = bank.getNamePlayer(id);
-            Menu menu = new Menu();
                 try{
+                    String namePlayer = bank.getNamePlayer(id);
+                    Menu menu = new Menu();
                     menu.menu(namePlayer);
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -73,16 +73,13 @@ public class LoadScreen{
             loadGame(input, appearance);
         } 
         input.close();
+        //Add fail numero errado
     }
 }
 
 //Reorganizar código
 //jeitar voltar ao menu
 //Ajeitar tabelas
-//Criar trigget de login
-//Criar view
 //Organizar readme git
 //Fazer slide sobre o projeto com url do repositório
 //Criar arquivo com código das tabelas postgeeSQL
-//Criar trigger para jogador que fez login
-//Criar nova table login

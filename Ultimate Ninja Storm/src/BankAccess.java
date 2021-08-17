@@ -95,7 +95,7 @@ public class BankAccess{
 
     public void addAttack(int id, String attack, int força, int tipo){
         ConnectionPGSQL bank = connect();
-        String sql = "INSERT INTO ataques(personagem, nome, força, tipo) values(" + id + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
+        String sql = "INSERT INTO ataques(id, personagem, nome, força, tipo) values(default, " + id + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
         int result= bank.update(sql);
         try{
             while(true){
@@ -310,7 +310,7 @@ public class BankAccess{
         return null;
     }
 
-    public void listCharacters(){
+    public void listCharacters(){ 
         ConnectionPGSQL bank = connect();
         String sql = "select id, nome from personagens";
         ResultSet result= bank.select(sql);

@@ -4,7 +4,7 @@ public class Ranking {
     private void exit(Scanner input, String namePlayer){
         try{
             while(true){
-                System.out.println("Aperte X para sair...");
+                System.out.println("\nAperte X para sair...");
                 String line = input.nextLine();
                 if(line.equals("x")){
                     Menu menu = new Menu();

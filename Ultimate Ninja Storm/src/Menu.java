@@ -4,7 +4,7 @@ public class Menu{
     public void menu(String namePlayer){
         Scanner input = new Scanner(System.in);
         Appearance appearance = new Appearance();
-        
+       
         while(true){
             appearance.CleanScreen();
             System.out.println("\nNARUTO ULTIMATE NINJA STORM!");
@@ -24,8 +24,7 @@ public class Menu{
                     duel.menuDuelo(namePlayer);
                 }catch(Exception e){
                     e.printStackTrace();
-                }
-                
+                }  
             }else if(line.equals("2")){
                 appearance.CleanScreen();
                 Ranking ranking = new Ranking();
@@ -33,8 +32,8 @@ public class Menu{
                     ranking.system(namePlayer);
                 }catch(Exception e){
                     e.printStackTrace();
-                }break;
-            
+                    //Criar voltar
+                }
             }else if(line.equals("3")){
                 appearance.CleanScreen();
                 Settings settings = new Settings();
@@ -43,7 +42,6 @@ public class Menu{
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-            
             }else if(line.equals("4")){
                 appearance.CleanScreen();
                 System.out.println("\n----------------------------------------\n");
