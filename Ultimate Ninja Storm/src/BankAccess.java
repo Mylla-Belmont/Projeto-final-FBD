@@ -13,13 +13,10 @@ public class BankAccess{
         String sql = "DELETE FROM ataques where personagem = " + id;
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao remover personagem...");
-            }
+            if(result> 0){
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao remover personagem...");
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -30,13 +27,10 @@ public class BankAccess{
         String sql = "DELETE FROM personagens where id = " + id;
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao remover personagem...");
-            }
+            if(result> 0){
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao remover personagem...");
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -47,14 +41,11 @@ public class BankAccess{
         String sql = "UPDATE jogador SET derrotas = derrotas + 1 where id = " + id;
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao adicionar derrota...");
-            }
-        }catch (Exception e){
+            if(result> 0){
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao adicionar derrota...");
+        }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
     }
@@ -63,14 +54,11 @@ public class BankAccess{
         ConnectionPGSQL bank = connect();
         String sql = "UPDATE jogador SET vitorias = vitorias + 1 where id = " + id;
         int result= bank.update(sql);
-        try{
-            while(true){
-                if(result> 0){
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao adicionar vitória...");
-            }
+        try{ 
+            if(result> 0){
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao adicionar vitória...");
         }catch (Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -81,30 +69,25 @@ public class BankAccess{
         String sql = "insert into jogador (id, nickname, vitorias, derrotas) values (default, '" + nome + "', 0, 0)";
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao adicionar jogador...");
+            if(result> 0){
+                bank.disconnect();
+            }else{
+                System.out.println("fail: Erro ao adicionar jogador...");
             }
         }catch (Exception e){
             e.printStackTrace();
         }bank.disconnect();
     }
 
-    public void addAttack(int id, String attack, int força, int tipo){
+    public void addAttack(int personagem, String attack, int força, int tipo){
         ConnectionPGSQL bank = connect();
-        String sql = "INSERT INTO ataques(id, personagem, nome, força, tipo) values(default, " + id + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
+        String sql = "INSERT INTO ataques(id, personagem, nome, força, tipo) values(default, " + personagem + ", '" + attack+ "'," + força + ", " + tipo + ")"; 
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    System.out.println("\nAtaque configurado!");
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao adicionar attacks...");
+            if(result> 0){
+                bank.disconnect();
+            }else{
+                System.out.println("fail: Erro ao adicionar attacks...");
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -117,14 +100,11 @@ public class BankAccess{
                      "VALUES(default,'"+nome+"',100,100, "+agilidade+", "+especial+")";
         int result= bank.update(sql);
         try{
-            while(true){
-                if(result> 0){
-                    System.out.println("\n" + nome + " adicionado com sucesso!");
-                    bank.disconnect();
-                    break;
-                }else
-                    System.out.println("fail: Erro ao adicionar personagem...");
-            }
+            if(result> 0){
+                System.out.println("\n" + nome + " adicionado com sucesso!");
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao adicionar personagem...");
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();
@@ -158,8 +138,9 @@ public class BankAccess{
                 nickname = result.getString("nickname");
                 vitorias = result.getInt("vitorias");
                 System.out.println("--------------------------------");
-                System.out.println("\n" + nickname + " - " + vitorias + " vitórias");
-            }bank.disconnect();
+                System.out.println("\n" + nickname + " - " + vitorias + " vitórias\n");
+            }System.out.println("--------------------------------");
+            bank.disconnect();
         }catch(Exception e){
             e.printStackTrace();
         }bank.disconnect();

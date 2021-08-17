@@ -51,7 +51,7 @@ public class DuelMode{
 
             }else if(line.equals("3")){
                 Menu menu = new Menu();
-                menu.menu(null);
+                menu.menu(namePlayer);
             }else{
                 appearance.CleanScreen();
                 continue;

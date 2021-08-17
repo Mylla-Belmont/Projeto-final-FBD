@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class AdversarySystem{
     private void attack(Characters adversary, Characters player, Random random){
-        int attackadversary = random.nextInt(4);
+        int attackadversary = random.nextInt(5);
         if(attackadversary >= 0 && attackadversary <= 2){
             player.takeDamage(adversary.attack(attackadversary, adversary.nome));
             System.out.println(adversary.nome + " atacou com um " + adversary.getNameAttack(attackadversary, adversary.nome));
@@ -34,7 +34,7 @@ public class AdversarySystem{
     
     public void commands(Characters player, Characters adversary){
         Random random = new Random();
-        int movimentoadversary = random.nextInt(5);
+        int movimentoadversary = random.nextInt(3);
 
         if(movimentoadversary == 0){
             recoverChakra(adversary);
