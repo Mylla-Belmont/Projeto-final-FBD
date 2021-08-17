@@ -24,7 +24,7 @@ public class BankAccess{
 
     public void deleteCharacters(int id){
         ConnectionPGSQL bank = connect();
-        String sql = "delete from personagens where id = " + id;
+        String sql = "delete from personagens where id_personagem = " + id;
         int result= bank.update(sql);
         try{
             if(result> 0){
@@ -153,7 +153,7 @@ public class BankAccess{
         try{
             int id = 0;
             while(result.next()) {
-                id = result.getInt("id");
+                id = result.getInt("id_jogador");
             }bank.disconnect();
             return id;
         }catch (Exception e){
@@ -170,7 +170,7 @@ public class BankAccess{
             int id = 0;
             String nome = null;
             while(result.next()){
-                id = result.getInt("id");
+                id = result.getInt("id_jogador");
                 nome = result.getString("nickname");
                 System.out.println(id + " - " + nome);
             }if(nome.equals(null)){
@@ -255,7 +255,7 @@ public class BankAccess{
         try{
             int id = 0;
             while(result.next()) {
-                id = result.getInt("id");
+                id = result.getInt("id_personagem");
             }bank.disconnect();
             return id;
         }catch(Exception e){
@@ -296,7 +296,7 @@ public class BankAccess{
         ResultSet result= bank.select(sql);
         try{
             while(result.next()){
-                int id = result.getInt("id");
+                int id = result.getInt("id_personagem");
                 String nome = result.getString("nome");
                 System.out.println(id+ " - "+ nome);
             }
