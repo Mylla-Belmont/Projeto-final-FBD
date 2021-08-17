@@ -8,23 +8,6 @@ public class BankAccess{
         return bank;
     }
 
-    public String getNamePlayer(String id){
-        ConnectionPGSQL bank = connect();
-        String sql = "SELECT nickname from jogador where id = " + Integer.parseInt(id);
-        ResultSet result = bank.select(sql);
-        try{
-            String namePlayer = null;
-            while(result.next()){
-                namePlayer = result.getString("nickname");
-            }
-            bank.disconnect();
-            return namePlayer;
-        }catch(Exception e){
-            e.printStackTrace();
-        }bank.disconnect();
-        return null;
-    }
-
     public void deleteAttacks(int id){
         ConnectionPGSQL bank = connect();
         String sql = "DELETE FROM ataques where personagem = " + id;
@@ -95,7 +78,7 @@ public class BankAccess{
 
     public void addPlayer(String nome){
         ConnectionPGSQL bank = connect();
-        String sql = "insert into jogador (id, nickname, vitorias, derrotas, pontuação) values (default, '" + nome + "', 0, 0, 0)";
+        String sql = "insert into jogador (id, nickname, vitorias, derrotas) values (default, '" + nome + "', 0, 0)";
         int result= bank.update(sql);
         try{
             while(true){
@@ -147,6 +130,23 @@ public class BankAccess{
         }bank.disconnect();
     }
 
+    public String getNamePlayer(String id){
+        ConnectionPGSQL bank = connect();
+        String sql = "SELECT nickname from jogador where id = " + Integer.parseInt(id);
+        ResultSet result = bank.select(sql);
+        try{
+            String namePlayer = null;
+            while(result.next()){
+                namePlayer = result.getString("nickname");
+            }
+            bank.disconnect();
+            return namePlayer;
+        }catch(Exception e){
+            e.printStackTrace();
+        }bank.disconnect();
+        return null;
+    }
+
     public void getRanking(){
         ConnectionPGSQL bank = connect();
         String sql = "SELECT nickname, vitorias from jogador";
@@ -158,7 +158,7 @@ public class BankAccess{
                 nickname = result.getString("nickname");
                 vitorias = result.getInt("vitorias");
                 System.out.println("--------------------------------");
-                System.out.println("\n" + nickname + " - " + vitorias + " vitórias\n");
+                System.out.println("\n" + nickname + " - " + vitorias + " vitórias");
             }bank.disconnect();
         }catch(Exception e){
             e.printStackTrace();
@@ -181,19 +181,27 @@ public class BankAccess{
         return 0;
     }
 
-    public void getPlayers(){
+    public int getPlayers(){
         ConnectionPGSQL bank = connect();
         String sql = "SELECT id, nickname from jogador";
         ResultSet result = bank.select(sql);
-        try {
-            while(result.next()) {
-                int id = result.getInt("id");
-                String nome = result.getString("nickname");
+        try{
+            int id = 0;
+            String nome = null;
+            while(result.next()){
+                id = result.getInt("id");
+                nome = result.getString("nickname");
                 System.out.println(id + " - " + nome);
             }
+            if(nome.equals(null)){
+                bank.disconnect();
+                return 0;
+            }else
+                return 1;
         } catch (Exception e) {
             e.printStackTrace();
         }bank.disconnect();
+        return 0;
     }
 
     public void getAllCharacters(){

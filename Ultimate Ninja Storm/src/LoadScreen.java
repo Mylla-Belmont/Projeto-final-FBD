@@ -1,21 +1,41 @@
 import java.util.Scanner;
 
 public class LoadScreen{
-    private static void loadGame(Scanner input){
-        System.out.println("\nNARUTO ULTIMATE NINJA STORM!\n");
-        BankAccess bank = new BankAccess();
-        bank.getPlayers();
-        System.out.println("\nQual o seu save?\n");
-        String id = input.nextLine();
-        String namePlayer = bank.getNamePlayer(id);
-        Menu menu = new Menu();
+
+    private static void exit(Scanner input){
         try{
-            menu.menu(namePlayer);
-        }catch (Exception e) {
+            while(true){
+                System.out.println("\nAperte X para sair...");
+                String line = input.nextLine();
+                if(line.equals("x")){
+                    main(null);
+                }else
+                    System.out.println("fail: Comando inválido");
+            }
+        }catch(Exception e){
             e.printStackTrace();
         }
-        //Criar trigger para jogador que fez login
-        //Criar nova table login
+    }
+
+    private static void loadGame(Scanner input, Appearance appearance){
+        System.out.println("\nNARUTO ULTIMATE NINJA STORM!\n");
+        BankAccess bank = new BankAccess();
+        int result = bank.getPlayers();
+        if(result > 0){
+            System.out.println("\nQual o seu save?\n");
+            String id = input.nextLine();
+            String namePlayer = bank.getNamePlayer(id);
+            Menu menu = new Menu();
+                try{
+                    menu.menu(namePlayer);
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }else{
+            appearance.CleanScreen();
+            System.out.println("\nfail: Não há nenhum save");
+            exit(input);
+        }
     }
 
     private static void newGame(Scanner input){
@@ -50,7 +70,7 @@ public class LoadScreen{
         
         }else if(line.equals("2")){
             appearance.CleanScreen();
-            loadGame(input);
+            loadGame(input, appearance);
         } 
         input.close();
     }
@@ -58,11 +78,11 @@ public class LoadScreen{
 
 //Reorganizar código
 //jeitar voltar ao menu
-//Fezer ranking
-//Add opção de ver seu game?
 //Ajeitar tabelas
 //Criar trigget de login
 //Criar view
 //Organizar readme git
 //Fazer slide sobre o projeto com url do repositório
 //Criar arquivo com código das tabelas postgeeSQL
+//Criar trigger para jogador que fez login
+//Criar nova table login
