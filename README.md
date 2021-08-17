@@ -1,4 +1,6 @@
 # Projeto final
 
-#### Disciplina: Fundamentos de banco de dados
-#### Aluno(a): Camila Belmont Mesquita
+<br>Fundamentos de banco de dados
+<br>Camila Belmont Mesquita
+
+<b>Ultimate Ninja Storm</b>
