@@ -11,7 +11,7 @@
    
   > Lembre-se que seu chakra diminui a cada ataque, então tenha cuidado pois sem chakra você não conseguirá atacar.
   
-  > Para executar um ataque, basta digitar o número da a opção.
+  > Para executar uma ação, basta digitar o número da opção.
 
 ##### Seu oponente também é muito hábil, e ele não vai hesitar em usar suas hábilidades para ataca-lo ou desviar de seus jutsus. Então, caso seja atingido diversas vezes e sua vida ou chakra encontre-se baixo, você pode usar sua tecnica de recuperação de vida ou a tecnica de recuperação de chakra.
 
