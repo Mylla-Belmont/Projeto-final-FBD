@@ -4,7 +4,7 @@
 
 
 
-##### Caro jogador, notei que você é o tipo de pessoa que gosta muito de brigas e confusões. Então aqui é o seu lugar!
+##### Caro jogador, notei que você é o tipo de pessoa que gosta muito de brigas e confusões. <br> Então aqui é o seu lugar!
 ##### Mas se prepare, dessa vez você estará disputando com diversos personagens que lutarão com todas as suas forças, <br> e ninguém, além de você, pode impedi-los de lhe humilhar nessa épica aventura.
 
 ##### Esteja atento para atacar usando suas tecnicas ninjas preferidas.
@@ -23,8 +23,6 @@
 
 ##### Esteja avisado, eles conhecem seus truques, e vão usa-los contra você sempre que possivel.
 
-##### Isso é tudo que precisa saber.
-##### Prepare-se para luta! 
-##### 3, 2, 1...
+##### Isso é tudo que precisa saber. <br> Prepare-se para luta! <br> 3, 2, 1...
 
 
