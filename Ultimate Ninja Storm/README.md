@@ -23,6 +23,7 @@
 
 ##### Esteja avisado, eles conhecem seus truques, e vão usa-los contra você sempre que possivel.
 
-##### Isso é tudo que precisa saber. <br> Prepare-se para luta! <br> 3, 2, 1...
+##### Isso é tudo que precisa saber. <br> Prepare-se para luta!
+##### 3, 2, 1...
 
 
