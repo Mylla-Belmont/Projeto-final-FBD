@@ -9,8 +9,8 @@ Mas se prepare, dessa vez você estará disputando com diversos personagens que 
 
 Esteja atento para atacar usando suas tecnicas ninjas preferidas.
    
-  *Lembre-se que seu chakra diminui a cada ataque, então tenha cuidado pois sem chakra você não conseguirá atacar.
-  **Para executar um ataque, basta digitar o número da a opção.
+  > *Lembre-se que seu chakra diminui a cada ataque, então tenha cuidado pois sem chakra você não conseguirá atacar.
+  > **Para executar um ataque, basta digitar o número da a opção.
 
 Seu oponente também é muito hábil, e ele não vai hesitar em usar suas hábilidades para 
 ataca-lo ou desviar de seus jutsus. Então, caso seja atingido diversas vezes e sua vida 
