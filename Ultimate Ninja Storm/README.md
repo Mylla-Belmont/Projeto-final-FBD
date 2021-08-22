@@ -4,8 +4,8 @@
 
 
 
-###### Caro jogador, notei que você é o tipo de pessoa que gosta muito de brigas e confusões. Então aqui é o seu lugar!
-###### Mas se prepare, dessa vez você estará disputando com diversos personagens que lutarão com todas as suas forças, e ninguém, além de você, pode impedi-los de lhe humilhar nessa épica aventura.
+##### Caro jogador, notei que você é o tipo de pessoa que gosta muito de brigas e confusões. Então aqui é o seu lugar!
+##### Mas se prepare, dessa vez você estará disputando com diversos personagens que lutarão com todas as suas forças, e ninguém, além de você, pode impedi-los de lhe humilhar nessa épica aventura.
 
 ###### Esteja atento para atacar usando suas tecnicas ninjas preferidas.
    
