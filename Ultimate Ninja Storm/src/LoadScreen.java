@@ -4,7 +4,7 @@ public class LoadScreen{
     private static void exit(Scanner input){
         try{
             while(true){
-                System.out.println("\nAperte X para sair...");
+                System.out.println("\nAperte X para confirmar saida...");
                 String line = input.nextLine();
                 if(line.equals("x")){
                     main(null);
@@ -21,18 +21,23 @@ public class LoadScreen{
         BankAccess bank = new BankAccess();
         int result = bank.getPlayers();
         if(result > 0){
+            System.out.println("\nX - Cancelar");
             System.out.println("\nQual o seu save?\n");
-            String id = input.nextLine();
-                try{
-                    String namePlayer = bank.getNamePlayer(id);
-                    Menu menu = new Menu();
-                    menu.menu(namePlayer);
-                }catch (Exception e) {
-                    e.printStackTrace();
+            String line = input.nextLine();
+                if(line.equals("x")){
+                    exit(input);
+                }else{ 
+                    try{
+                        String namePlayer = bank.getNamePlayer(line);
+                        Menu menu = new Menu();
+                        menu.menu(namePlayer);
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
         }else{
             appearance.CleanScreen();
-            System.out.println("\nfail: Não há nenhum save");
+            System.out.println("\nNão há nenhum save! Inicie um novo jogo.");
             exit(input);
         }
     }
@@ -79,7 +84,7 @@ public class LoadScreen{
                 break;
             }else
                 continue;
-            input.close();
         }
+        input.close();
     }
 }

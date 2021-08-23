@@ -79,3 +79,4 @@ insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 
 /*Deletes usados no jogo*/
 /* deleteCharacters------>*/delete from personagens where id_personagem = "id"
 /* deleteCharacters------>*/delete from ataques where personagem = "id"
+/* deletePlayer------>*/delete from jogador where nickname = 'x'

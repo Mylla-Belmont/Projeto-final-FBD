@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class DuelMode{
-
     private Characters ChooseRandom(){
         Random random = new Random();
         BankAccess bank = new BankAccess();

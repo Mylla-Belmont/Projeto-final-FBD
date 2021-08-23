@@ -51,9 +51,9 @@ insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 
 insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 2, 'soco mais forte', 20, 1) 
 insert into ataques(id_ataques, personagem, nome, força, tipo) values(default, 2, 'meteoro de socos', 30, 2)
 
-/*Selects usados no jogo*/
-/* "nome das variaveis" */
 
+/* "nome das variaveis" */
+/*Selects usados no jogo*/
 /* listCharacters------>*/select id_personagem, nome from personagens
 /* getNumCharacters------>*/select id_personagem, nome from personagens
 /* getCharacters------>*/select nome, vida, chakra, especial, agilidade from personagens where id_personagem = "id"

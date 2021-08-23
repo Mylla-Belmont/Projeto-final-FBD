@@ -16,6 +16,12 @@ public class Settings{
         }
     }
 
+    private void deleteSave(String namePlayer){
+        BankAccess bank = new BankAccess();
+        bank.deletePlayer(namePlayer);
+        LoadScreen.main(null);
+    }
+
     private void removeCharacter(Scanner input, String namePlayer){
         BankAccess bank = new BankAccess();
         bank.listCharacters();
@@ -88,7 +94,8 @@ public class Settings{
             System.out.println("1 - Ver personagens");
             System.out.println("2 - Adicionar personagm");
             System.out.println("3 - Remover personagem");
-            System.out.println("4 - Menu principal\n");
+            System.out.println("4 - Formatar save");
+            System.out.println("5 - Menu principal\n");
 
             String line = input.nextLine();  
 
@@ -105,6 +112,10 @@ public class Settings{
                 removeCharacter(input, namePlayer);
 
             }else if(line.equals("4")){
+                appearance.CleanScreen();
+                deleteSave(namePlayer);
+
+            }else if(line.equals("5")){
                 appearance.CleanScreen();
                 Menu menu = new Menu();
                 menu.menu(namePlayer);

@@ -7,6 +7,20 @@ public class BankAccess{
         return bank;
     }
 
+    public void deletePlayer(String namePlayer){
+        ConnectionPGSQL bank = connect();
+        String sql = "delete from jogador where nickname = '" + namePlayer + "'";
+        int result= bank.update(sql);
+        try{
+            if(result> 0){
+                bank.disconnect();
+            }else
+                System.out.println("fail: Erro ao remover jogador...");
+        }catch(Exception e){
+            e.printStackTrace();
+        }bank.disconnect();
+    }
+
     public void deleteAttacks(int id){
         ConnectionPGSQL bank = connect();
         String sql = "delete from ataques where personagem = " + id;
