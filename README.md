@@ -17,7 +17,7 @@
 
 ## 🛠️ Tecnologias e Ferramentas
 
-- Java 8+
+- Java 
 - PostgreSQL
 - JDBC
 - IDE: VsCode
